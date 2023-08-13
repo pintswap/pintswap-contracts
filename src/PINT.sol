@@ -23,7 +23,6 @@ contract PINT is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
     address constant treasury =
         address(0xEC3de41D5eAD4cebFfD656f7FC9d1a8d8Ff0f8c0);
     IWETH constant weth = IWETH(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
-    address public immutable opps;
     address public immutable pair;
     address public immutable ve;
     address public constant deadAddress = address(0xdead);
@@ -85,9 +84,8 @@ contract PINT is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
         uint256 tokensIntoLiquidity
     );
 
-    constructor(address _pair, address _ve, address _opps) {
+    constructor(address _pair, address _ve) {
         pair = _pair;
-        opps = _opps;
         ve = _ve;
     }
 
