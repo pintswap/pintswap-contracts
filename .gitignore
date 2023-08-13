@@ -3,6 +3,7 @@ cache/
 out/
 *.swp
 *.swo
+node_modules
 
 # Ignores development broadcast logs
 !/broadcast
