@@ -33,7 +33,7 @@ contract PINTDeploy {
 
     constructor() {
         ProxyAdmin proxy = new ProxyAdmin();
-        address pintAddress = getCreateAddress(2);
+        address pintAddress = getCreateAddress(4);
         address pair = UniswapV2PairComputeLibrary.pairFor(
             address(factory),
             pintAddress,
