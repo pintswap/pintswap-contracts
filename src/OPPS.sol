@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 import {ERC721Permit} from "./erc721/ERC721Permit.sol";
 import {ERC721Enumerable} from "openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import {Ownable} from "openzeppelin-contracts/contracts/access/Ownable.sol";
-import {ClonesUpgradeable} from "openzeppelin-contracts/contracts/proxy/ClonesUpgradeable.sol";
+import {ClonesUpgradeable} from "openzeppelin-contracts-upgradeable/contracts/proxy/ClonesUpgradeable.sol";
 import {sipERC20} from "./sipERC20.sol";
 
 contract OPPS is ERC721Permit, Ownable {
