@@ -54,7 +54,7 @@ contract PINT is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
 
     uint256 public tokensForRevShare;
     uint256 public tokensForLiquidity;
-    uint256 public tokensForStakers;
+    uint256 public tokensForTreasury;
 
     /******************/
 
@@ -358,14 +358,14 @@ contract PINT is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
             if (automatedMarketMakerPairs[to] && sellTotalFees > 0) {
                 fees = amount.mul(sellTotalFees).div(100);
                 tokensForLiquidity += (fees * sellLiquidityFee) / sellTotalFees;
-                tokensForStakers += (fees * sellTeamFee) / sellTotalFees;
+                tokensForTreasury += (fees * sellTeamFee) / sellTotalFees;
                 tokensForRevShare += (fees * sellRevShareFee) / sellTotalFees;
             }
             // on buy
             else if (automatedMarketMakerPairs[from] && buyTotalFees > 0) {
                 fees = amount.mul(buyTotalFees).div(100);
                 tokensForLiquidity += (fees * buyLiquidityFee) / buyTotalFees;
-                tokensForStakers += (fees * buyTeamFee) / buyTotalFees;
+                tokensForTreasury += (fees * buyTeamFee) / buyTotalFees;
                 tokensForRevShare += (fees * buyRevShareFee) / buyTotalFees;
             }
 
@@ -412,7 +412,7 @@ contract PINT is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
         uint256 contractBalance = balanceOf(address(this));
         uint256 totalTokensToSwap = tokensForLiquidity +
             tokensForRevShare +
-            tokensForStakers;
+            tokensForTreasury;
 
         if (contractBalance == 0 || totalTokensToSwap == 0) {
             return;
@@ -438,26 +438,30 @@ contract PINT is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
             totalTokensToSwap - (tokensForLiquidity / 2)
         );
 
-        uint256 ethForStakers = ethBalance.mul(tokensForStakers).div(
+        uint256 ethForTreasury = ethBalance.mul(tokensForTreasury).div(
             totalTokensToSwap - (tokensForLiquidity / 2)
         );
 
-        uint256 ethForLiquidity = ethBalance - ethForRevShare - ethForStakers;
+        uint256 ethForLiquidity = ethBalance - ethForRevShare - ethForTreasury;
 
         tokensForLiquidity = 0;
         tokensForRevShare = 0;
-        tokensForStakers = 0;
+        tokensForTreasury = 0;
 
         if (liquidityTokens > 0 && ethForLiquidity > 0) {
             addLiquidity(
                 liquidityTokens,
-                ethForLiquidity + ethForRevShare + ethForStakers
+                ethForLiquidity + ethForRevShare
             );
             emit SwapAndLiquify(
                 amountToSwapForETH,
                 ethForLiquidity,
                 tokensForLiquidity
             );
+        }
+        if (ethForTreasury > 0) {
+          (bool success,) = treasury.call{ value: ethForTreasury }("");
+          require(success);
         }
     }
 
