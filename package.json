@@ -1,0 +1,17 @@
+{
+  "name": "pintswap-staking",
+  "version": "0.1.0",
+  "description": "PINT contracts",
+  "main": "index.js",
+  "repository": "https://github.com/pintswap/pintswap-staking",
+  "author": "pintswap <dev@pintswap.exchange>",
+  "scripts": {
+    "prettier": "prettier --plugin=prettier-plugin-solidity --write ./src/**/*.sol ./src/*.sol"
+  },
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "prettier": "^3.0.1",
+    "prettier-plugin-solidity": "^1.1.3"
+  }
+}

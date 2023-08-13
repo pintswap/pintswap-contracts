@@ -88,10 +88,22 @@ contract sipERC20 is ERC4626Upgradeable {
     }
 
     function initialize(IERC20Upgradeable underlying) public {
-      opps = msg.sender;
-      __ERC20_init_unchained(_takeName(string(abi.encodePacked("sip", _tryGetSymbol(underlying))), address(underlying), false), _takeName(string(abi.encodePacked("sip", _tryGetSymbol(underlying))), address(underlying), true));
-      __ERC4626_init(underlying);
+        opps = msg.sender;
+        __ERC20_init_unchained(
+            _takeName(
+                string(abi.encodePacked("sip", _tryGetSymbol(underlying))),
+                address(underlying),
+                false
+            ),
+            _takeName(
+                string(abi.encodePacked("sip", _tryGetSymbol(underlying))),
+                address(underlying),
+                true
+            )
+        );
+        __ERC4626_init(underlying);
     }
+
     modifier isTheOpps() {
         require(
             ERC721Enumerable(opps).tokenOfOwnerByIndex(msg.sender, 0) >= 0,

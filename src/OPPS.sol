@@ -19,11 +19,22 @@ contract OPPS is ERC721Permit, Ownable {
     string private __baseURI;
     modifier onlySIP() {
         address asset = sipERC20(msg.sender).asset();
-	require(msg.sender == ClonesUpgradeable.predictDeterministicAddress(sipImplementation, bytes32(uint256(uint160(asset)))), "!sip");
+        require(
+            msg.sender ==
+                ClonesUpgradeable.predictDeterministicAddress(
+                    sipImplementation,
+                    bytes32(uint256(uint160(asset)))
+                ),
+            "!sip"
+        );
         _;
     }
+
     function deployVault(address asset) public {
-      ClonesUpgradeable.cloneDeterministic(sipImplementation, bytes32(uint256(uint160(asset))));
+        ClonesUpgradeable.cloneDeterministic(
+            sipImplementation,
+            bytes32(uint256(uint160(asset)))
+        );
     }
 
     function registerName(bytes32 nameHash) public onlySIP {
@@ -34,7 +45,7 @@ contract OPPS is ERC721Permit, Ownable {
         setBaseURI(
             "ipfs://bafybeiezpbqq6favps74erwn35ircae2xqqdmczxjs7imosdkn6ahmuxme/"
         );
-	sipImplementation = address(new sipERC20());
+        sipImplementation = address(new sipERC20());
     }
 
     function _baseURI() internal view override returns (string memory) {
