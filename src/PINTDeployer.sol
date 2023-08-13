@@ -6,7 +6,7 @@ import {ProxyAdmin} from "openzeppelin-contracts/contracts/proxy/transparent/Pro
 import {IUniswapV2Factory} from "uniswap-v2-core/interfaces/IUniswapV2Factory.sol";
 import {UniswapV2PairComputeLibrary} from "./libraries/UniswapV2PairComputeLibrary.sol";
 import {PINT} from "./PINT.sol";
-import {vePINT} from "./vePINT.sol";
+import {sPINT} from "./sPINT.sol";
 
 contract PINTDeploy {
     IUniswapV2Factory constant factory =
@@ -39,12 +39,12 @@ contract PINTDeploy {
             pintAddress,
             weth
         );
-        address veLogic = address(new vePINT());
+        address veLogic = address(new sPINT());
         address ve = address(
             new TransparentUpgradeableProxy(
                 veLogic,
                 address(proxy),
-                abi.encodeWithSelector(vePINT.initialize.selector, pair)
+                abi.encodeWithSelector(sPINT.initialize.selector, pair)
             )
         );
         address pintLogic = address(new PINT(pair, ve));
