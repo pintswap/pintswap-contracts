@@ -110,10 +110,10 @@ contract PINT is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
         uint256 _sellLiquidityFee = 1;
         uint256 _sellTeamFee = 2;
 
-        uint256 totalSupply = 100_000_000 * 1e18;
+        uint256 totalSupply = 1_000_000_000 * 1e18;
 
-        maxTransactionAmount = 1_000_000 * 1e18; // 1%
-        maxWallet = 1_000_000 * 1e18; // 1%
+        maxTransactionAmount = 10_000_000 * 1e18; // 1%
+        maxWallet = 10_000_000 * 1e18; // 1%
         swapTokensAtAmount = (totalSupply * 5) / 10000; // 0.05%
 
         buyRevShareFee = _buyRevShareFee;
