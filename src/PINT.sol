@@ -28,6 +28,7 @@ contract PINT is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
     address public constant deadAddress = address(0xdead);
 
     bool private swapping;
+    bool public veEnabled;
 
     uint256 public maxTransactionAmount;
     uint256 public swapTokensAtAmount;
@@ -396,6 +397,12 @@ contract PINT is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
             block.timestamp
         );
     }
+    function enableStaking() public onlyOwner {
+      veEnabled = true;
+    }
+    function disableStaking() public onlyOwner {
+      veEnabled = false;
+    }
 
     function addLiquidity(uint256 tokenAmount, uint256 ethAmount) private {
         // approve token transfer to cover all possible scenarios
@@ -405,7 +412,7 @@ contract PINT is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
         IWETH(weth).deposit{value: ethAmount}();
         IERC20(address(weth)).safeTransfer(address(pair), ethAmount);
         this.transfer(address(pair), tokenAmount);
-        IUniswapV2Pair(pair).mint(ve);
+        IUniswapV2Pair(pair).mint(veEnabled ? ve : treasury);
     }
 
     function swapBack() private {
