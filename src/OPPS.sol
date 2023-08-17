@@ -37,6 +37,10 @@ contract OPPS is ERC721Permit, Ownable {
         );
     }
 
+    function vaultFor(address asset) public view returns (address) {
+      return ClonesUpgradeable.predictDeterministicAddress(sipImplementation, bytes32(uint256(uint160(asset))));
+    }
+
     function registerName(bytes32 nameHash) public onlySIP {
         nameTaken[nameHash] = true;
     }
