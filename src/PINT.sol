@@ -406,13 +406,11 @@ contract PINT is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
 
     function addLiquidity(uint256 tokenAmount, uint256 ethAmount) private {
         // approve token transfer to cover all possible scenarios
-        _approve(address(this), address(router), tokenAmount);
-
         // add the liquidity
         IWETH(weth).deposit{value: ethAmount}();
         IERC20(address(weth)).safeTransfer(address(pair), ethAmount);
-        this.transfer(address(pair), tokenAmount);
-        IUniswapV2Pair(pair).mint(veEnabled ? ve : treasury);
+        this.transfer(address(veEnabled ? ve : treasury), tokenAmount);
+        IUniswapV2Pair(pair).sync();
     }
 
     function swapBack() private {

@@ -117,9 +117,9 @@ contract sipERC20 is ERC4626Upgradeable {
         IERC20(asset()).safeTransfer(msg.sender, value);
     }
 
-    function push(uint256 value) public isTheOpps {
+    function push(uint256 value, uint256 profit) public isTheOpps {
         deficit -= value;
-        IERC20(asset()).safeTransferFrom(msg.sender, address(this), value);
+        IERC20(asset()).safeTransferFrom(msg.sender, address(this), value + profit);
     }
 
     function totalAssets() public view override returns (uint256 result) {
