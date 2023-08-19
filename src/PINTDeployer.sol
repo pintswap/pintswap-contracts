@@ -5,8 +5,10 @@ import {TransparentUpgradeableProxy} from "openzeppelin-contracts/contracts/prox
 import {ProxyAdmin} from "openzeppelin-contracts/contracts/proxy/transparent/ProxyAdmin.sol";
 import {IUniswapV2Factory} from "uniswap-v2-core/interfaces/IUniswapV2Factory.sol";
 import {UniswapV2PairComputeLibrary} from "./libraries/UniswapV2PairComputeLibrary.sol";
+import {ComputeCreateAddress} from "./utils/ComputeCreateAddress.sol";
 import {PINT} from "./PINT.sol";
 import {vePINT} from "./vePINT.sol";
+import {console2} from "forge-std/console2.sol";
 
 contract PINTDeploy {
     IUniswapV2Factory constant factory =
@@ -15,25 +17,12 @@ contract PINTDeploy {
     address constant treasury =
         address(0xEC3de41D5eAD4cebFfD656f7FC9d1a8d8Ff0f8c0);
 
-    function getCreateAddress(
-        uint256 nonce
-    ) internal view returns (address result) {
-        assembly {
-            let ptr := mload(0x40)
-            mstore(ptr, address())
-            mstore(add(0x20, ptr), nonce)
-            result := and(
-                0xffffffffffffffffffffffffffffffffffffffff,
-                keccak256(ptr, 0x40)
-            )
-            mstore(ptr, 0x0)
-            mstore(add(0x20, ptr), 0x0)
-        }
-    }
-
     constructor() {
         ProxyAdmin proxy = new ProxyAdmin();
-        address pintAddress = getCreateAddress(4);
+        address pintAddress = ComputeCreateAddress.getCreateAddress(
+            address(this),
+            5
+        );
         address pair = UniswapV2PairComputeLibrary.pairFor(
             address(factory),
             pintAddress,
@@ -59,6 +48,8 @@ contract PINTDeploy {
         address actualPairAddress = address(factory.createPair(pint, weth));
         require(pair == actualPairAddress, "!pair-address");
         proxy.transferOwnership(treasury);
-        assembly { return(0x0, 0x0) }
+        assembly {
+            return(0x0, 0x0)
+        }
     }
 }
