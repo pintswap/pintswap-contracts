@@ -2,25 +2,17 @@
 
 pragma solidity >=0.8.7 <0.9.0;
 
-import "forge-deploy/DeployScript.sol";
-import "generated/deployer/DeployerFunctions.g.sol";
-import "forge-std/console2.sol";
-import {DefaultDeployerFunction, DeployOptions} from "forge-deploy/DefaultDeployerFunction.sol";
+import {Script, console2} from "forge-std/Script.sol";
+import {PINTDeploy} from "../src/PINTDeployer.sol";
 
-contract Deployments is DeployScript {
-    using DeployerFunctions for Deployer;
-    using DefaultDeployerFunction for Deployer;
+contract Deployments is Script {
 
-    function deploy() external returns (PINTDeploy) {
-        console2.log("deploying");
-        bytes memory bytecode = abi.encodePacked(
-            vm.getCode("PINTDeployer.sol:PINTDeploy")
-        );
-        address deployed;
-        assembly {
-            deployed := create(0, add(bytecode, 0x20), mload(bytecode))
-        }
-        vm.etch(address(100), deployed.code);
-        return PINTDeploy(address(100));
+    function run() public {
+        uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
+
+        vm.startBroadcast(deployerPrivateKey);
+        address _pintDeploy = address(new PINTDeploy());
+        console2.log(_pintDeploy);
+        vm.stopBroadcast();
     }
 }
