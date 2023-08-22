@@ -15,11 +15,7 @@ contract PintDeployerTest is Common {
         assertEq(pint.decimals(), 18);
         assertEq(pint.name(), "PINT");
         assertEq(pint.symbol(), "PINT");
-        bytes32 hash;
-        address ve = address(vePint);
-        assembly {
-            hash := extcodehash(ve)
-        }
-        console2.log(uint256(hash));
+        assertEq(bytes(vePint.symbol()), bytes("sipPINT"));
+        assertEq(vePint.symbol(), "sipPINT");
     }
 }
