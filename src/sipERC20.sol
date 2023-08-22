@@ -87,7 +87,7 @@ contract sipERC20 is ERC4626Upgradeable {
         }
     }
 
-    function initialize(IERC20Upgradeable underlying) public {
+    function initialize(IERC20Upgradeable underlying) public initializer {
         opps = msg.sender;
         __ERC20_init_unchained(
             _takeName(
