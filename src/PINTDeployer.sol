@@ -15,6 +15,7 @@ contract PINTDeploy {
     address constant weth = address(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
     address constant treasury =
         address(0xEC3de41D5eAD4cebFfD656f7FC9d1a8d8Ff0f8c0);
+
     constructor() {
         ProxyAdmin proxy = new ProxyAdmin();
         address pintAddress = ComputeCreateAddress.getCreateAddress(
@@ -27,7 +28,9 @@ contract PINTDeploy {
             weth
         );
         address opps = address(new OPPS());
-        address pintLogic = address(new PINT(pair, OPPS(opps).vaultFor(pintAddress)));
+        address pintLogic = address(
+            new PINT(pair, OPPS(opps).vaultFor(pintAddress))
+        );
         address pint = address(
             new TransparentUpgradeableProxy(
                 pintLogic,
