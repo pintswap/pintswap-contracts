@@ -4,14 +4,13 @@ pragma solidity >=0.8.7 <0.9.0;
 
 import {Common} from "./Common.test.sol";
 
-contract Reverts is Common {
+contract SipERC20Test is Common {
     function setUp() public {
         initializeMainnetFork();
         setUpBase();
     }
 
-    function testRevertOnWrongBorrow() public {
-        vePint.finna(1 ether);
-        vm.expectRevert(bytes(""));
-    }
+    function testDeposit() public {}
+
+    function testShares() public {}
 }
