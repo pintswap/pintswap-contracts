@@ -31,6 +31,10 @@ contract Common is Test {
             ComputeCreateAddress.getCreateAddress(address(pintDeploy), 2)
         );
         vePint = sipERC20(PINT(pint).ve());
+        //send pint to address(100)
+        vm.startPrank(treasury);
+        pint.transfer(address(100), 1 ether);
+        vm.stopPrank();
     }
 
     function initializeMainnetFork() public {
