@@ -9,15 +9,12 @@ contract Reverts is Common {
         initializeMainnetFork();
         setUpBase();
         //send pint to address(100)
-        vm.expectRevert(bytes("Ownable: caller is not the owner"));
-        pint.enableTrading();
         vm.startPrank(treasury);
         pint.transfer(address(100), 1 ether);
         vm.stopPrank();
-        vm.startPrank(address(100));
-        vm.expectRevert(bytes("Not authorized to transfer pre-migration."));
-        pint.transfer(address(200), 1 ether);
-        vm.stopPrank();
+    }
+
+    function testRevertOnWrongFinna() public {
         vm.startPrank(treasury);
         pint.enableTrading();
         opps.mint(address(100), 0);
@@ -25,9 +22,6 @@ contract Reverts is Common {
         vm.startPrank(address(100));
         pint.approve(address(vePint), ~uint256(1));
         vm.stopPrank();
-    }
-
-    function testRevertOnWrongBorrow() public {
         vm.expectRevert(bytes("ERC721Enumerable: owner index out of bounds"));
         vePint.finna(1 ether);
         vm.expectRevert(bytes("ERC721Enumerable: owner index out of bounds"));
@@ -39,5 +33,14 @@ contract Reverts is Common {
         vePint.finna(1 ether);
         vm.expectRevert(bytes("ERC20: transfer amount exceeds balance"));
         vePint.finna(1 ether);
+    }
+
+    function testRevertOnPint() public {
+        vm.startPrank(address(100));
+        vm.expectRevert(bytes("Ownable: caller is not the owner"));
+        pint.enableTrading();
+        vm.expectRevert(bytes("Not authorized to transfer pre-migration."));
+        pint.transfer(address(200), 1 ether);
+        vm.stopPrank();
     }
 }
