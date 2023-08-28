@@ -12,6 +12,7 @@ import {IUniswapV2Factory} from "uniswap-v2-core/interfaces/IUniswapV2Factory.so
 import {IUniswapV2Router02} from "uniswap-v2-periphery/interfaces/IUniswapV2Router02.sol";
 import {SafeMath} from "openzeppelin-contracts/contracts/utils/math/SafeMath.sol";
 import {OwnableUpgradeable} from "openzeppelin-contracts-upgradeable/contracts/access/OwnableUpgradeable.sol";
+import {console2} from "forge-std/console2.sol";
 
 contract PINT is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
     using SafeERC20 for IERC20;
@@ -240,7 +241,7 @@ contract PINT is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
             "The pair cannot be removed from automatedMarketMakerPairs"
         );
 
-        _setAutomatedMarketMakerPair(pair, value);
+        _setAutomatedMarketMakerPair(_pair, value);
     }
 
     function _setAutomatedMarketMakerPair(address _pair, bool value) private {
@@ -353,11 +354,17 @@ contract PINT is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
         }
 
         uint256 fees = 0;
+        console2.log(
+            takeFee,
+            automatedMarketMakerPairs[to],
+            automatedMarketMakerPairs[from]
+        );
         // only take fees on buys/sells, do not take on wallet transfers
         if (takeFee) {
             // on sell
             if (automatedMarketMakerPairs[to] && sellTotalFees > 0) {
                 fees = amount.mul(sellTotalFees).div(100);
+                console2.log(fees);
                 tokensForLiquidity += (fees * sellLiquidityFee) / sellTotalFees;
                 tokensForTreasury += (fees * sellTeamFee) / sellTotalFees;
                 tokensForRevShare += (fees * sellRevShareFee) / sellTotalFees;
@@ -365,6 +372,7 @@ contract PINT is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
             // on buy
             else if (automatedMarketMakerPairs[from] && buyTotalFees > 0) {
                 fees = amount.mul(buyTotalFees).div(100);
+                console2.log(fees);
                 tokensForLiquidity += (fees * buyLiquidityFee) / buyTotalFees;
                 tokensForTreasury += (fees * buyTeamFee) / buyTotalFees;
                 tokensForRevShare += (fees * buyRevShareFee) / buyTotalFees;
