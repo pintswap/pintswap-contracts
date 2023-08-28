@@ -159,11 +159,9 @@ contract PINT is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
     }
 
     // change the minimum amount of tokens to sell from fees
-    function updateSwapTokensAtAmount(uint256 newAmount)
-        external
-        onlyOwner
-        returns (bool)
-    {
+    function updateSwapTokensAtAmount(
+        uint256 newAmount
+    ) external onlyOwner returns (bool) {
         require(
             newAmount >= (totalSupply() * 1) / 100000,
             "Swap amount cannot be lower than 0.001% total supply."
@@ -181,7 +179,7 @@ contract PINT is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
             newNum >= ((totalSupply() * 5) / 1000) / 1e18,
             "Cannot set maxTransactionAmount lower than 0.5%"
         );
-        maxTransactionAmount = newNum * (10**18);
+        maxTransactionAmount = newNum * (10 ** 18);
     }
 
     function updateMaxWalletAmount(uint256 newNum) external onlyOwner {
@@ -189,13 +187,13 @@ contract PINT is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
             newNum >= ((totalSupply() * 10) / 1000) / 1e18,
             "Cannot set maxWallet lower than 1.0%"
         );
-        maxWallet = newNum * (10**18);
+        maxWallet = newNum * (10 ** 18);
     }
 
-    function excludeFromMaxTransaction(address updAds, bool isEx)
-        public
-        onlyOwner
-    {
+    function excludeFromMaxTransaction(
+        address updAds,
+        bool isEx
+    ) public onlyOwner {
         _isExcludedMaxTransactionAmount[updAds] = isEx;
     }
 
@@ -233,10 +231,10 @@ contract PINT is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
         emit ExcludeFromFees(account, excluded);
     }
 
-    function setAutomatedMarketMakerPair(address _pair, bool value)
-        public
-        onlyOwner
-    {
+    function setAutomatedMarketMakerPair(
+        address _pair,
+        bool value
+    ) public onlyOwner {
         require(
             pair != _pair,
             "The pair cannot be removed from automatedMarketMakerPairs"
@@ -477,10 +475,10 @@ contract PINT is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
         payable(msg.sender).transfer(address(this).balance);
     }
 
-    function withdrawStuckToken(address _token, address _to)
-        external
-        onlyOwner
-    {
+    function withdrawStuckToken(
+        address _token,
+        address _to
+    ) external onlyOwner {
         require(_token != address(0), "_token address cannot be 0");
         uint256 _contractBalance = IERC20(_token).balanceOf(address(this));
         IERC20(_token).transfer(_to, _contractBalance);
@@ -523,10 +521,10 @@ contract PINT is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
         blacklisted[_addr] = false;
     }
 
-    function setPreMigrationTransferable(address _addr, bool isAuthorized)
-        public
-        onlyOwner
-    {
+    function setPreMigrationTransferable(
+        address _addr,
+        bool isAuthorized
+    ) public onlyOwner {
         preMigrationTransferrable[_addr] = isAuthorized;
         excludeFromFees(_addr, isAuthorized);
         excludeFromMaxTransaction(_addr, isAuthorized);
