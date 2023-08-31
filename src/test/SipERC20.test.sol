@@ -4,6 +4,7 @@ pragma solidity >=0.8.7 <0.9.0;
 
 import {Common} from "./Common.test.sol";
 import {console2} from "forge-std/console2.sol";
+import {IERC20} from "openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
 
 contract SipERC20Test is Common {
     function setUp() public {

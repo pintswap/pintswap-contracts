@@ -12,6 +12,8 @@ import {UniswapV2PairComputeLibrary} from "../libraries/UniswapV2PairComputeLibr
 import {IWETH} from "uniswap-v2-periphery/interfaces/IWETH.sol";
 import {IUniswapV2Factory} from "uniswap-v2-core/interfaces/IUniswapV2Factory.sol";
 import {IUniswapV2Router02} from "uniswap-v2-periphery/interfaces/IUniswapV2Router02.sol";
+import {IERC20} from "openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
+import {IUniswapV2Pair} from "uniswap-v2-core/interfaces/IUniswapV2Pair.sol";
 
 contract Common is Test {
     uint256 mainnet;
@@ -46,12 +48,31 @@ contract Common is Test {
         //send pint to address(100)
         vm.startPrank(treasury);
         pint.transfer(address(100), 1 ether);
-        vm.stopPrank();
+        vm.deal(treasury, 200 ether);
+        pint.approve(address(router), ~uint(1));
+        IERC20(address(weth)).approve(address(router), ~uint(1));
+        router.addLiquidityETH{value: 1 ether}(
+            address(pint),
+            1000 ether,
+            999 ether + (999 ether / 1000),
+            1 ether - (1 ether / 1000),
+            treasury,
+            block.timestamp + 2000
+        );
         pair = UniswapV2PairComputeLibrary.pairFor(
             address(factory),
             address(pint),
             address(weth)
         );
+        IUniswapV2Pair(pair).sync();
+        vm.stopPrank();
+        vm.startPrank(address(100));
+        pint.approve(address(router), ~uint(1));
+        IERC20(address(weth)).approve(address(router), ~uint(1));
+        vm.startPrank(address(200));
+        pint.approve(address(router), ~uint(1));
+        IERC20(address(weth)).approve(address(router), ~uint(1));
+        vm.stopPrank();
     }
 
     function initializeMainnetFork() public {
