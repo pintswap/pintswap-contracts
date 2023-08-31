@@ -48,14 +48,14 @@ contract Common is Test {
         //send pint to address(100)
         vm.startPrank(treasury);
         pint.transfer(address(100), 1 ether);
-        vm.deal(treasury, 200 ether);
+        vm.deal(treasury, 1000 ether);
         pint.approve(address(router), ~uint(1));
         IERC20(address(weth)).approve(address(router), ~uint(1));
-        router.addLiquidityETH{value: 1 ether}(
+        router.addLiquidityETH{value: 100 ether}(
             address(pint),
-            1000 ether,
-            999 ether + (999 ether / 1000),
-            1 ether - (1 ether / 1000),
+            10000000 ether,
+            99 ether + (999 ether / 1000),
+            9999999 ether + (999 ether / 1000),
             treasury,
             block.timestamp + 2000
         );

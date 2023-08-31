@@ -12,7 +12,6 @@ import {IUniswapV2Factory} from "uniswap-v2-core/interfaces/IUniswapV2Factory.so
 import {IUniswapV2Router02} from "uniswap-v2-periphery/interfaces/IUniswapV2Router02.sol";
 import {SafeMath} from "openzeppelin-contracts/contracts/utils/math/SafeMath.sol";
 import {OwnableUpgradeable} from "openzeppelin-contracts-upgradeable/contracts/access/OwnableUpgradeable.sol";
-import {console2} from "forge-std/console2.sol";
 
 contract PINT is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
     using SafeERC20 for IERC20;
@@ -330,7 +329,6 @@ contract PINT is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
         uint256 contractTokenBalance = balanceOf(address(this));
 
         bool canSwap = contractTokenBalance >= swapTokensAtAmount;
-
         if (
             canSwap &&
             swapEnabled &&
@@ -339,6 +337,8 @@ contract PINT is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
             !_isExcludedFromFees[from] &&
             !_isExcludedFromFees[to]
         ) {
+            console2.log("here");
+
             swapping = true;
 
             swapBack();
@@ -355,7 +355,6 @@ contract PINT is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
 
         uint256 fees = 0;
 
-        console2.log(takeFee);
         // only take fees on buys/sells, do not take on wallet transfers
         if (takeFee) {
             // on sell
@@ -436,6 +435,7 @@ contract PINT is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
         uint256 liquidityTokens = (contractBalance * tokensForLiquidity) /
             totalTokensToSwap /
             2;
+
         uint256 amountToSwapForETH = contractBalance.sub(liquidityTokens);
 
         uint256 initialETHBalance = address(this).balance;
@@ -444,6 +444,7 @@ contract PINT is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
 
         uint256 ethBalance = address(this).balance.sub(initialETHBalance);
 
+        console2.log(ethBalance);
         uint256 ethForRevShare = ethBalance.mul(tokensForRevShare).div(
             totalTokensToSwap - (tokensForLiquidity / 2)
         );
@@ -468,6 +469,7 @@ contract PINT is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
         }
         if (ethForTreasury > 0) {
             (bool success, ) = treasury.call{value: ethForTreasury}("");
+
             require(success);
         }
     }
