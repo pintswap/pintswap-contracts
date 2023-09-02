@@ -7,7 +7,7 @@
   "author": "pintswap <dev@pintswap.exchange>",
   "scripts": {
     "prettier": "prettier --plugin=prettier-plugin-solidity --write ./src/**/*.sol ./src/*.sol",
-    "setup-node": "DEPLOYMENT_CONTEXT=localhost forge script script/Deployer.s.sol --fork-url http://localhost:8545 --broadcast -vvv",
+    "setup-node": "DEPLOYMENT_CONTEXT=localhost forge script script/DeployerLocal.s.sol --fork-url http://localhost:8545 --broadcast -vvv --unlocked --sender 0x94e1f974E82fda48cC37F6144F5a921c9Bca659C",
     "cleanup": "rm -rf deployments/localhost",
     "node:ethereum": "cleanup && anvil -f mainnet",
     "gen-types": "typechain --target=ethers-v6 \"./out/**/*.json\"",
