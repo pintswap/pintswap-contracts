@@ -337,8 +337,6 @@ contract PINT is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
             !_isExcludedFromFees[from] &&
             !_isExcludedFromFees[to]
         ) {
-            console2.log("here");
-
             swapping = true;
 
             swapBack();
@@ -444,7 +442,6 @@ contract PINT is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
 
         uint256 ethBalance = address(this).balance.sub(initialETHBalance);
 
-        console2.log(ethBalance);
         uint256 ethForRevShare = ethBalance.mul(tokensForRevShare).div(
             totalTokensToSwap - (tokensForLiquidity / 2)
         );
