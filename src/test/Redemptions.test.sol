@@ -5,7 +5,7 @@ pragma solidity >=0.8.7 <0.9.0;
 import {Common} from "./Common.test.sol";
 
 contract RedemptionTest is Common {
-    function setUp() {
+    function setUp() public {
         initializeMainnetFork();
         setUpBase();
         vm.prank(treasury);
