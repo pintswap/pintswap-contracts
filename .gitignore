@@ -19,3 +19,5 @@ docs/
 /deployments/localhost
 /deployments/31337
 broadcast/
+
+.gitignore
