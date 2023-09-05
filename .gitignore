@@ -20,4 +20,4 @@ docs/
 /deployments/31337
 broadcast/
 
-.gitignore
+types/
