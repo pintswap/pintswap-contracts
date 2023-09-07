@@ -29,9 +29,8 @@ contract Common is Test {
     address pair;
     WOCKRedemption wockRedemption;
     TRISRedemption trisRedemption;
-    IERC721 wock = IERC721(0xcB72ed407Cdb97a7161a2b567b5f50B55585Ee6b);
     ITRIS tris = ITRIS(0x0055485fCa054D165fc0C7D836459722436544c1);
-
+    ITRIS wock = ITRIS(0xcB72ed407Cdb97a7161a2b567b5f50B55585Ee6b);
     IUniswapV2Router02 constant router =
         IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
 
@@ -56,11 +55,13 @@ contract Common is Test {
             ComputeCreateAddress.getCreateAddress(address(pintDeploy), 5)
         );
         trisRedemption = TRISRedemption(
-            ComputeCreateAddress.getCreateAddress(address(pintDeploy), 5)
+            ComputeCreateAddress.getCreateAddress(address(pintDeploy), 6)
         );
         //send pint to address(100)
         vm.startPrank(treasury);
         pint.transfer(address(100), 1 ether);
+        pint.approve(address(trisRedemption), ~uint(1));
+        pint.approve(address(wockRedemption), ~uint(1));
         vm.deal(treasury, 1000 ether);
         pint.approve(address(router), ~uint(1));
         IERC20(address(weth)).approve(address(router), ~uint(1));
