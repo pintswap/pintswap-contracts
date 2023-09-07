@@ -62,6 +62,7 @@ contract Common is Test {
         pint.transfer(address(100), 1 ether);
         pint.approve(address(trisRedemption), ~uint(1));
         pint.approve(address(wockRedemption), ~uint(1));
+        pint.approve(0xB10daee1FCF62243aE27776D7a92D39dC8740f95, ~uint(1));
         vm.deal(treasury, 1000 ether);
         pint.approve(address(router), ~uint(1));
         IERC20(address(weth)).approve(address(router), ~uint(1));
