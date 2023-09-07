@@ -3,6 +3,7 @@
 pragma solidity >=0.8.7 <0.9.0;
 
 import {Common} from "./Common.test.sol";
+import {Math} from "openzeppelin-contracts/contracts/utils/math/Math.sol";
 
 contract RedemptionTest is Common {
     uint[] tokenIds;
@@ -13,7 +14,6 @@ contract RedemptionTest is Common {
         initializeMainnetFork();
         setUpBase();
 
-        vm.startPrank(tris.owner());
         for (uint i = 0; i < 10; i++) {
             tokenIds.push(
                 uint(
@@ -26,8 +26,10 @@ contract RedemptionTest is Common {
                     )
                 )
             );
+            vm.prank(tris.owner());
             tris.adminMint(address(uint160((100 + (i * 100)))), tokenIds[i]);
-            wock.adminMint(address(uint160((100 + (i * 100)))), tokenIds[i]);
+            vm.prank(wock.owner());
+            wock.mint(address(uint160((100 + (i * 100)))), tokenIds[i]);
         }
     }
 
@@ -43,11 +45,11 @@ contract RedemptionTest is Common {
         vm.startPrank(address(100));
         uint[] memory _tokenIds = new uint[](1);
         _tokenIds[0] = tokenIds[0];
-        wock.setApprovalForAll(address(trisRedemption), true);
+        wock.setApprovalForAll(address(wockRedemption), true);
         wockRedemption.redeem(_tokenIds);
         vm.startPrank(address(200));
         _tokenIds[0] = tokenIds[1];
-        wock.setApprovalForAll(address(trisRedemption), true);
+        wock.setApprovalForAll(address(wockRedemption), true);
         uint streamid = wockRedemption.redeem(_tokenIds);
 
         assertEq(streamid, 0);
@@ -60,6 +62,6 @@ contract RedemptionTest is Common {
                     REDEMPTION) /
                 (52 weeks)
         );
-        vm.skip(block.timestamp + 10 weeks);
+        vm.warp(block.timestamp + 10 weeks);
     }
 }
