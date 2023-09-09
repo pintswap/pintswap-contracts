@@ -9,9 +9,10 @@
     "prettier": "prettier --plugin=prettier-plugin-solidity --write ./src/**/*.sol ./src/*.sol",
     "setup-node": "cast rpc anvil_setBalance 0x94e1f974E82fda48cC37F6144F5a921c9Bca659C 0x10000000000000000000000000000 & forge script script/DeployerLocal.s.sol --fork-url http://localhost:8545 --broadcast -vvv --unlocked --sender 0x94e1f974E82fda48cC37F6144F5a921c9Bca659C",
     "cleanup": "rm -rf deployments/localhost",
-    "node:ethereum": "anvil -f mainnet --auto-impersonate",
+    "node:ethereum": "anvil -f https://mainnet.infura.io/v3/84842078b09946638c03157f83405213 --auto-impersonate",
     "gen-types": "typechain --target=ethers-v6 \"./out/**/*.json\"",
-    "build": "forge build && yarn gen-types"
+    "build": "forge build && yarn gen-types",
+    "deploy": "forge create src/PINTDeployer.sol:PINTDeployer --rpc-url http://127.0.0.1:8545 --mnemonic-path ~/mnemonic.txt --constructor-args '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266'"
   },
   "license": "MIT",
   "private": false,

@@ -11,7 +11,7 @@ import {TRISRedemption} from "./TRISRedemption.sol";
 import {PINT} from "./PINT.sol";
 import {OPPS} from "./OPPS.sol";
 
-contract PINTDeploy {
+contract PINTDeployer {
     IUniswapV2Factory constant factory =
         IUniswapV2Factory(0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f);
     address constant weth = address(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
