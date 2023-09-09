@@ -18,18 +18,20 @@ contract PINTDeployer {
     address constant treasury =
         address(0xEC3de41D5eAD4cebFfD656f7FC9d1a8d8Ff0f8c0);
 
-    constructor(address oppsOwner) {
+    constructor() {
+        address opps = ComputeCreateAddress.getCreateAddress(msg.sender, 0);
         ProxyAdmin proxy = new ProxyAdmin();
         address pintAddress = ComputeCreateAddress.getCreateAddress(
             address(this),
-            4
+            3
         );
+        OPPS(opps).vaultFor(pintAddress);
         address pair = UniswapV2PairComputeLibrary.pairFor(
             address(factory),
             pintAddress,
             weth
         );
-        address opps = address(new OPPS());
+        if (true) revert("woop");
         address pintLogic = address(
             new PINT(pair, OPPS(opps).vaultFor(pintAddress))
         );
@@ -40,10 +42,7 @@ contract PINTDeployer {
                 abi.encodeWithSelector(PINT.initialize.selector)
             )
         );
-        new WOCKRedemption(pint);
-        new TRISRedemption(pint);
         OPPS(opps).deployVault(pintAddress);
-        OPPS(opps).transferOwnership(oppsOwner);
         require(pint == pintAddress, "!pint-address");
         address actualPairAddress = address(factory.createPair(pint, weth));
         require(pair == actualPairAddress, "!pair-address");
