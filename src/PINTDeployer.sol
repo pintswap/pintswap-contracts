@@ -16,7 +16,7 @@ contract PINTDeploy {
     address constant treasury =
         address(0xEC3de41D5eAD4cebFfD656f7FC9d1a8d8Ff0f8c0);
 
-    constructor() {
+    constructor(address oppsOwner) {
         ProxyAdmin proxy = new ProxyAdmin();
         address pintAddress = ComputeCreateAddress.getCreateAddress(
             address(this),
@@ -39,10 +39,12 @@ contract PINTDeploy {
             )
         );
         OPPS(opps).deployVault(pintAddress);
+        OPPS(opps).transferOwnership(oppsOwner);
         require(pint == pintAddress, "!pint-address");
         address actualPairAddress = address(factory.createPair(pint, weth));
         require(pair == actualPairAddress, "!pair-address");
         proxy.transferOwnership(treasury);
+
         assembly {
             return(0x0, 0x0)
         }
