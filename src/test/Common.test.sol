@@ -15,6 +15,7 @@ import {IUniswapV2Factory} from "uniswap-v2-core/interfaces/IUniswapV2Factory.so
 import {IUniswapV2Router02} from "uniswap-v2-periphery/interfaces/IUniswapV2Router02.sol";
 import {IERC20} from "openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
 import {IUniswapV2Pair} from "uniswap-v2-core/interfaces/IUniswapV2Pair.sol";
+import {IERC721} from "openzeppelin-contracts/contracts/token/ERC721/IERC721.sol";
 
 contract Common is Test {
     uint256 mainnet;
@@ -25,6 +26,8 @@ contract Common is Test {
     OPPS opps;
     address pair;
     PINTRedemption redemption;
+    IERC721 wock = 0xcB72ed407Cdb97a7161a2b567b5f50B55585Ee6b;
+    IERC721 tris = 0x0055485fCa054D165fc0C7D836459722436544c1;
 
     IUniswapV2Router02 constant router =
         IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
