@@ -39,7 +39,7 @@ contract PINTDeploy {
                 abi.encodeWithSelector(PINT.initialize.selector)
             )
         );
-        address pintRedemption = new PINTRedemption(pint);
+        new PINTRedemption(pint);
         OPPS(opps).deployVault(pintAddress);
         OPPS(opps).transferOwnership(oppsOwner);
         require(pint == pintAddress, "!pint-address");

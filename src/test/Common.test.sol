@@ -26,8 +26,8 @@ contract Common is Test {
     OPPS opps;
     address pair;
     PINTRedemption redemption;
-    IERC721 wock = 0xcB72ed407Cdb97a7161a2b567b5f50B55585Ee6b;
-    IERC721 tris = 0x0055485fCa054D165fc0C7D836459722436544c1;
+    IERC721 wock = IERC721(0xcB72ed407Cdb97a7161a2b567b5f50B55585Ee6b);
+    IERC721 tris = IERC721(0x0055485fCa054D165fc0C7D836459722436544c1);
 
     IUniswapV2Router02 constant router =
         IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
