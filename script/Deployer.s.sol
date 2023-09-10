@@ -10,7 +10,7 @@ contract Deployments is Script {
         uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
 
         vm.startBroadcast(deployerPrivateKey);
-        new PINTDeployer(vm.addr(deployerPrivateKey));
+        new PINTDeployer();
         vm.stopBroadcast();
     }
 }

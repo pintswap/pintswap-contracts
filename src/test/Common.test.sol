@@ -43,7 +43,7 @@ contract Common is Test {
 
     function setUpBase() public {
         vm.startPrank(0x94e1f974E82fda48cC37F6144F5a921c9Bca659C);
-        pintDeploy = new PINTDeployer(treasury);
+        pintDeploy = new PINTDeployer();
         assertEq(
             address(pintDeploy),
             0xd665F1153599e8F799b2514069dF4481d3bcb043

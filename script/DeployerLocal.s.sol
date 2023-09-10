@@ -10,6 +10,6 @@ contract DeploymentsLocal is Script {
     event Deploy(address addr);
     function run() public {
         vm.deal(owner, 20 ether);
-        emit Deploy(address(new PINTDeployer(owner)));
+        emit Deploy(address(new PINTDeployer()));
     }
 }
