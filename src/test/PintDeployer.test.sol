@@ -20,15 +20,20 @@ contract PintDeployerTest is Common {
         pintDeploy = new PINTDeploy();
         pint = PINT(
             payable(
-                ComputeCreateAddress.getCreateAddress(address(pintDeploy), 2)
+                ComputeCreateAddress.getCreateAddress(address(pintDeploy), 5)
             )
         );
         vePint = vePINT(
-            (ComputeCreateAddress.getCreateAddress(address(pintDeploy), 4))
+            (ComputeCreateAddress.getCreateAddress(address(pintDeploy), 3))
         );
     }
 
     function testBasicRun() public {
-        console2.log(pint.decimals());
+        assertEq(pint.decimals(), 18);
+        console2.log(address(100));
+        assertEq(pint.name(), "PINT");
+        assertEq(pint.symbol(), "PINT");
+        assertEq(vePint.name(), "vePINT");
+        assertEq(vePint.symbol(), "vePINT");
     }
 }

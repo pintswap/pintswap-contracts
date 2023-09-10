@@ -12,7 +12,6 @@ contract Deployments is Script {
 
         vm.startBroadcast(deployerPrivateKey);
         address _pintDeploy = address(new PINTDeploy());
-        console2.log(_pintDeploy);
         vm.stopBroadcast();
     }
 }
