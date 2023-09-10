@@ -35,7 +35,11 @@ contract PintTest is Common {
         pint.setAutomatedMarketMakerPair(address(200), true);
         vm.startPrank(address(100));
         pint.transfer(address(200), 1 ether);
-        console2.log(pint.balanceOf(address(200)));
+        assertEq(
+            pint.balanceOf(address(200)),
+            (1 ether) - (((1 ether) * 5) / (100))
+        );
+        assertEq(pint.balanceOf(address(pint)), ((1 ether) * 5) / 100);
     }
 
     function testPintTrading() public {}
