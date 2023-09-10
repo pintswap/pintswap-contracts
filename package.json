@@ -9,22 +9,28 @@
     "prettier": "prettier --plugin=prettier-plugin-solidity --write ./src/**/*.sol ./src/*.sol",
     "setup-node": "cast rpc anvil_setBalance 0x94e1f974E82fda48cC37F6144F5a921c9Bca659C 0x10000000000000000000000000000 & forge script script/DeployerLocal.s.sol --fork-url http://localhost:8545 --broadcast -vvv --unlocked --sender 0x94e1f974E82fda48cC37F6144F5a921c9Bca659C",
     "cleanup": "rm -rf deployments/localhost",
-    "node:ethereum": "anvil -f https://mainnet.infura.io/v3/84842078b09946638c03157f83405213 --auto-impersonate",
+    "node:ethereum": "anvil -f https://mainnet.infura.io/v3/84842078b09946638c03157f83405213 --auto-impersonate -m 'assume fitness moment future coin dutch wait join delay faint response skin'",
     "gen-types": "typechain --target=ethers-v6 \"./out/**/*.json\"",
     "build": "forge build && yarn gen-types",
-    "deploy": "forge create src/PINTDeployer.sol:PINTDeployer --rpc-url http://127.0.0.1:8545 --mnemonic-path ~/mnemonic.txt --constructor-args '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266'"
+    "deploy:opps": "forge create src/OPPS.sol:OPPS --rpc-url http://127.0.0.1:8545 --mnemonic 'assume fitness moment future coin dutch wait join delay faint response skin'",
+    "deploy:1": "forge create src/PINTDeployer.sol:PINTDeployer --rpc-url http://127.0.0.1:8545 --mnemonic 'assume fitness moment future coin dutch wait join delay faint response skin'",
+    "deploy:2": "forge create src/PINTDeployer2.sol:PINTDeployer2 --rpc-url http://127.0.0.1:8545 --mnemonic 'assume fitness moment future coin dutch wait join delay faint response skin'",
+    "deploy": "npm-run-all deploy:opps deploy:1 deploy:2"
   },
   "license": "MIT",
   "private": false,
   "devDependencies": {
     "@typechain/ethers-v6": "^0.5.0",
     "forge-deploy": "^0.2.0",
+    "npm-run-all": "^4.1.5",
     "prettier": "^3.0.2",
     "prettier-plugin-solidity": "^1.1.3",
     "typechain": "^8.3.1"
   },
   "prettier": {
-    "plugins": ["prettier-plugin-solidity"],
+    "plugins": [
+      "prettier-plugin-solidity"
+    ],
     "overrides": [
       {
         "files": "*.sol",

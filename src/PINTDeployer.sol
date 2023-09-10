@@ -25,13 +25,11 @@ contract PINTDeployer {
             address(this),
             3
         );
-        OPPS(opps).vaultFor(pintAddress);
         address pair = UniswapV2PairComputeLibrary.pairFor(
             address(factory),
             pintAddress,
             weth
         );
-        if (true) revert("woop");
         address pintLogic = address(
             new PINT(pair, OPPS(opps).vaultFor(pintAddress))
         );
