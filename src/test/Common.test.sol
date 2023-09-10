@@ -35,15 +35,14 @@ contract Common is Test {
         address(0xEC3de41D5eAD4cebFfD656f7FC9d1a8d8Ff0f8c0);
 
     function setUpBase() public {
+        vm.startPrank(0x94e1f974E82fda48cC37F6144F5a921c9Bca659C);
         pintDeploy = new PINTDeploy(treasury);
-        pint = PINT(
-            payable(
-                ComputeCreateAddress.getCreateAddress(address(pintDeploy), 4)
-            )
+        assertEq(
+            address(pintDeploy),
+            0xd665F1153599e8F799b2514069dF4481d3bcb043
         );
-        opps = OPPS(
-            ComputeCreateAddress.getCreateAddress(address(pintDeploy), 2)
-        );
+        pint = PINT(payable(0x35409176FD2ffEB23786c2a6EF5b05184c6EDBa7));
+        opps = OPPS(0x66316fC4371A59238D9a54c9Acb382a4B977BF8E);
         vePint = sipERC20(PINT(pint).ve());
         //send pint to address(100)
         vm.startPrank(treasury);
