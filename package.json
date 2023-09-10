@@ -8,7 +8,7 @@
   "scripts": {
     "prettier": "prettier --plugin=prettier-plugin-solidity --write ./src/**/*.sol ./src/*.sol",
     "gen-deploy": "forge-deploy gen-deployer && forge build",
-    "setup-node": "DEPLOYMENT_CONTEXT=localhost forge script script/Deployer.s.sol --rpc-url http://localhost:8545 --broadcast --private-key ac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 -vvvv && ./forge-deploy sync;",
+    "setup-node": "DEPLOYMENT_CONTEXT=localhost forge script script/Deployer.s.sol --fork-url http://localhost:8545 --broadcast -vvv",
     "cleanup": "rm -rf deployments/localhost",
     "node:ethereum": "cleanup && anvil -f mainnet"
   },
