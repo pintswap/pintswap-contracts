@@ -12,13 +12,14 @@ contract PintTest is Common {
     }
 
     function testPintLimits() public {
+        uint maxTx = pint.maxTransactionAmount();
+        uint maxWallet = pint.maxWallet();
         vm.startPrank(treasury);
         pint.enableTrading();
-        pint.transfer(address(100), pint.maxTransactionAmount());
+        pint.transfer(address(100), maxWallet);
         vm.startPrank(address(100));
-        console2.log(pint.maxWallet() > pint.maxTransactionAmount());
         vm.expectRevert(bytes("Max wallet exceeded"));
-        pint.transfer(address(200), pint.maxTransactionAmount() + 2);
+        pint.transfer(address(200), maxWallet + 2);
         vm.startPrank(treasury);
         pint.transfer(address(100), 1 ether);
         vm.startPrank(address(100));
