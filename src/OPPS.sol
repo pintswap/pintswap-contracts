@@ -18,13 +18,16 @@ contract OPPS is ERC721Permit, Ownable {
 
     string private __baseURI;
     modifier onlySIP() {
-        address asset = sipERC20(msg.sender).asset();
+        require(sipERC20(msg.sender).opps() == address(this), "!opps");
+        bytes32 expected;
+        bytes32 actual;
+        address impl = sipImplementation;
+        assembly {
+          expected := extcodehash(impl)
+          actual := extcodehash(caller())
+        }
         require(
-            msg.sender ==
-                ClonesUpgradeable.predictDeterministicAddress(
-                    sipImplementation,
-                    bytes32(uint256(uint160(asset)))
-                ),
+            expected == actual,
             "!sip"
         );
         _;
@@ -35,6 +38,7 @@ contract OPPS is ERC721Permit, Ownable {
             sipImplementation,
             bytes32(uint256(uint160(asset)))
         );
+        sipERC20(sipImplementation).initialize(asset);
     }
 
     function vaultFor(address asset) public view returns (address) {

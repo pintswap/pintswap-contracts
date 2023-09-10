@@ -5,11 +5,13 @@ import {ERC20Upgradeable} from "openzeppelin-contracts-upgradeable/contracts/tok
 import {IERC20} from "openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
 import {IERC20Upgradeable} from "openzeppelin-contracts-upgradeable/contracts/token/ERC20/IERC20Upgradeable.sol";
 import {IERC20Metadata} from "openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol";
+import {IERC20MetadataUpgradeable} from "openzeppelin-contracts-upgradeable/contracts/token/ERC20/extensions/IERC20MetadataUpgradeable.sol";
 import {SafeERC20} from "openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol";
 import {ERC721Enumerable} from "openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import {OPPS} from "./OPPS.sol";
+import {console2} from "forge-std/console2.sol";
 
-contract sipERC20 is ERC4626Upgradeable {
+contract sipERC20 is IERC20MetadataUpgradeable, ERC4626Upgradeable {
     using SafeERC20 for IERC20;
     uint256 public deficit;
     address public opps;
@@ -59,7 +61,7 @@ contract sipERC20 is ERC4626Upgradeable {
         IERC20Upgradeable asset
     ) internal view returns (string memory _symbol) {
         (bool success, bytes memory returnData) = address(this).staticcall(
-            abi.encodePacked(this._tryGetSymbolFrame.selector, address(asset))
+            abi.encodePacked(this._tryGetSymbolFrame.selector, abi.encode(address(asset)))
         );
         if (!success)
             return
@@ -77,31 +79,36 @@ contract sipERC20 is ERC4626Upgradeable {
         string memory _name,
         address _asset,
         bool reserve
-    ) internal returns (string memory) {
+    ) internal returns (string memory name) {
         bytes32 nameHash = keccak256(abi.encodePacked(_name));
         if (OPPS(opps).nameTaken(nameHash)) {
-            return _fingerprint8(_asset);
+            name = _fingerprint8(_asset);
         } else {
             if (reserve) OPPS(opps).registerName(nameHash);
-            return _name;
+            name = _name;
         }
     }
+    function symbol() public view virtual override(IERC20MetadataUpgradeable, ERC20Upgradeable) returns (string memory result) {
+      result = super.symbol();
+      console2.log(result);
+    }
+      
 
-    function initialize(IERC20Upgradeable underlying) public initializer {
+    function initialize(address underlying) public initializer {
         opps = msg.sender;
         __ERC20_init_unchained(
             _takeName(
-                string(abi.encodePacked("sip", _tryGetSymbol(underlying))),
-                address(underlying),
+                string(abi.encodePacked("sip", _tryGetSymbol(IERC20Upgradeable(underlying)))),
+                underlying,
                 false
             ),
             _takeName(
-                string(abi.encodePacked("sip", _tryGetSymbol(underlying))),
-                address(underlying),
+                string(abi.encodePacked("sip", _tryGetSymbol(IERC20Upgradeable(underlying)))),
+                underlying,
                 true
             )
         );
-        __ERC4626_init(underlying);
+        __ERC4626_init(IERC20Upgradeable(underlying));
     }
 
     modifier isTheOpps() {
