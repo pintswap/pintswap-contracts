@@ -3,7 +3,7 @@
 pragma solidity >=0.8.7 <0.9.0;
 
 import {Common} from "./Common.test.sol";
-import {PINTDeploy} from "../PintDeployer.sol";
+import {PINTDeploy} from "../PINTDeployer.sol";
 import {PINT} from "../PINT.sol";
 import {vePINT} from "../vePINT.sol";
 import {console2} from "forge-std/console2.sol";
