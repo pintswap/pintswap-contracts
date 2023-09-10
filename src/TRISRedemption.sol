@@ -23,9 +23,12 @@ contract TRISRedemption {
     }
 
     function redeem(uint256[] memory tokenIds) public returns (uint256 output) {
-        require(msg.sender != treasury, "!treasury");
         for (uint256 i = 0; i < tokenIds.length; i++) {
-            IERC721(nft).safeTransferFrom(msg.sender, treasury, tokenIds[i]);
+            IERC721(nft).safeTransferFrom(
+                msg.sender,
+                address(0xdead),
+                tokenIds[i]
+            );
         }
         output = tokenIds.length * REDEMPTION;
         IERC20(asset).safeTransferFrom(treasury, msg.sender, output);

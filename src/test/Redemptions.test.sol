@@ -14,6 +14,9 @@ contract RedemptionTest is Common {
         initializeMainnetFork();
         setUpBase();
 
+        vm.prank(treasury);
+        pint.enableTrading();
+
         for (uint i = 0; i < 10; i++) {
             tokenIds.push(
                 uint(

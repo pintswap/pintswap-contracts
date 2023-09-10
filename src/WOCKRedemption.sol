@@ -22,35 +22,47 @@ contract WOCKRedemption {
     constructor(address _asset) {
         asset = _asset;
         startTime = block.timestamp;
+        IERC20(asset).safeApprove(address(lockupLinear), type(uint256).max);
     }
 
     function redeem(
         uint256[] memory tokenIds
     ) public returns (uint256 streamId) {
-        require(msg.sender != treasury, "!treasury");
         for (uint256 i = 0; i < tokenIds.length; i++) {
-            IERC721(nft).safeTransferFrom(msg.sender, treasury, tokenIds[i]);
+            IERC721(nft).safeTransferFrom(
+                msg.sender,
+                address(0xdead),
+                tokenIds[i]
+            );
         }
         uint256 total = tokenIds.length * REDEMPTION;
-        uint256 vested = Math.max(
+        uint256 vested = Math.min(
             total,
             total / 4 + (3 * (block.timestamp - startTime) * total) / (52 weeks)
         );
         IERC20(asset).safeTransferFrom(treasury, msg.sender, vested);
-        LockupLinear.CreateWithDurations memory params;
-        params.sender = treasury;
-        params.recipient = msg.sender;
-        params.totalAmount = uint128(total - vested);
-        params.asset = IERC20Sablier(asset);
-        params.cancelable = true;
-        params.durations = LockupLinear.Durations({
-            cliff: 0 weeks,
-            total: uint40(
-                (52 weeks - Math.max(52 weeks, block.timestamp - startTime))
-            )
-        });
-        params.broker = Broker(address(0x0), ud60x18(0));
-        if (block.timestamp - startTime > 52 weeks) streamId = uint256(0x0);
-        else streamId = lockupLinear.createWithDurations(params);
+        if (total - vested > 0) {
+            IERC20(asset).safeTransferFrom(
+                treasury,
+                address(this),
+                total - vested
+            );
+            LockupLinear.CreateWithDurations memory params;
+            params.sender = treasury;
+            params.recipient = msg.sender;
+            params.totalAmount = uint128(total - vested);
+            params.asset = IERC20Sablier(asset);
+            params.cancelable = true;
+            params.durations = LockupLinear.Durations({
+                cliff: uint40(0 weeks),
+                total: uint40(
+                    (52 weeks - Math.min(52 weeks, block.timestamp - startTime))
+                )
+            });
+            params.broker = Broker(address(treasury), ud60x18(0));
+            if (block.timestamp - startTime >= (51 weeks + 6 days + 23 hours))
+                streamId = uint256(0x0);
+            else streamId = lockupLinear.createWithDurations(params);
+        }
     }
 }
