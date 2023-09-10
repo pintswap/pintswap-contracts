@@ -5,6 +5,7 @@ import {Test} from "forge-std/Test.sol";
 import {PINT} from "../PINT.sol";
 import {sipERC20} from "../sipERC20.sol";
 import {PINTDeploy} from "../PINTDeployer.sol";
+import {PINTRedemption} from "../PINTRedemption.sol";
 import {ComputeCreateAddress} from "../utils/ComputeCreateAddress.sol";
 import {OPPS} from "../OPPS.sol";
 import {IERC20Metadata} from "openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol";
@@ -23,6 +24,7 @@ contract Common is Test {
     PINTDeploy pintDeploy;
     OPPS opps;
     address pair;
+    PINTRedemption redemption;
 
     IUniswapV2Router02 constant router =
         IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
@@ -44,6 +46,9 @@ contract Common is Test {
         pint = PINT(payable(0x35409176FD2ffEB23786c2a6EF5b05184c6EDBa7));
         opps = OPPS(0x66316fC4371A59238D9a54c9Acb382a4B977BF8E);
         vePint = sipERC20(PINT(pint).ve());
+        redemption = PINTRedemption(
+            ComputeCreateAddress.getCreateAddress(address(pintDeploy), 5)
+        );
         //send pint to address(100)
         vm.startPrank(treasury);
         pint.transfer(address(100), 1 ether);
