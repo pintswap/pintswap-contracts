@@ -28,7 +28,15 @@ contract PintTest is Common {
         pint.transfer(address(200), 1 ether);
     }
 
-    function testPintFees() public {}
+    function testPintFees() public {
+        uint maxWallet = pint.maxWallet();
+        vm.startPrank(treasury);
+        pint.enableTrading();
+        pint.setAutomatedMarketMakerPair(address(200), true);
+        vm.startPrank(address(100));
+        pint.transfer(address(200), 1 ether);
+        console2.log(pint.balanceOf(address(200)));
+    }
 
     function testPintTrading() public {}
 
