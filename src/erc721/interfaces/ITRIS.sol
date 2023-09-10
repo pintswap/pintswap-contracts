@@ -8,4 +8,6 @@ interface ITRIS is IERC721 {
     function owner() external returns (address);
 
     function adminMint(address, uint) external;
+
+    function mint(address, uint) external;
 }
