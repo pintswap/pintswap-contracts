@@ -7,14 +7,24 @@ import {IERC20Upgradeable} from "openzeppelin-contracts-upgradeable/contracts/to
 
 contract vePINT is ERC4626Upgradeable {
     error NonTransferable();
-    function initialize(IERC20Upgradeable underlying) public {
+
+    function initialize(IERC20Upgradeable underlying) public initializer {
         __ERC20_init_unchained("vePINT", "vePINT");
         __ERC4626_init(underlying);
     }
-    function transfer(address /* _to */, uint256 /* _amount */) public pure override(ERC20Upgradeable, IERC20Upgradeable) returns (bool) {
-      revert NonTransferable();
+
+    function transfer(
+        address, /* _to */
+        uint256 /* _amount */
+    ) public pure override(ERC20Upgradeable, IERC20Upgradeable) returns (bool) {
+        revert NonTransferable();
     }
-    function transferFrom(address /* _from */, address /* _to */, uint256 /* amount */) public pure override(ERC20Upgradeable, IERC20Upgradeable)  returns (bool) {
-      revert NonTransferable();
+
+    function transferFrom(
+        address, /* _from */
+        address, /* _to */
+        uint256 /* amount */
+    ) public pure override(ERC20Upgradeable, IERC20Upgradeable) returns (bool) {
+        revert NonTransferable();
     }
 }
