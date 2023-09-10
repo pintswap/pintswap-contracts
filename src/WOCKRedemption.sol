@@ -56,12 +56,11 @@ contract WOCKRedemption {
             params.durations = LockupLinear.Durations({
                 cliff: uint40(0 weeks),
                 total: uint40(
-                    (52 weeks - Math.min(52 weeks, block.timestamp - startTime))
+                    52 weeks - Math.min(52 weeks, block.timestamp - startTime)
                 )
             });
             params.broker = Broker(address(treasury), ud60x18(0));
-            if (block.timestamp - startTime >= (51 weeks + 6 days + 23 hours))
-                streamId = uint256(0x0);
+            if (block.timestamp - startTime > 52 weeks) streamId = uint256(0x0);
             else streamId = lockupLinear.createWithDurations(params);
         }
     }
