@@ -8,10 +8,13 @@ contract RedemptionTest is Common {
     function setUp() public {
         initializeMainnetFork();
         setUpBase();
-        vm.prank(treasury);
 
         //TODO: this later
-        vm.prank(address(100));
+        vm.prank(tris.owner());
+        tris.adminMint(
+            address(100),
+            uint(keccak256(abi.encodePacked(address(tris))))
+        );
     }
 
     function testSablierStream() public {
