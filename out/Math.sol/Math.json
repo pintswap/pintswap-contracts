@@ -1,0 +1,197 @@
+{
+  "abi": [],
+  "bytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "ast": {
+    "absolutePath": "lib/v2-core/src/types/Math.sol",
+    "id": 61584,
+    "exportedSymbols": {
+      "SD59x18": [
+        58539
+      ],
+      "UD2x18": [
+        58910
+      ],
+      "UD60x18": [
+        60714
+      ],
+      "sd": [
+        56338
+      ],
+      "sd59x18": [
+        56355
+      ],
+      "ud": [
+        59173
+      ],
+      "ud2x18": [
+        58813
+      ],
+      "ud60x18": [
+        59190
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "81:383:109",
+    "nodes": [
+      {
+        "id": 61572,
+        "nodeType": "PragmaDirective",
+        "src": "81:25:109",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          ">=",
+          "0.8",
+          ".19"
+        ]
+      },
+      {
+        "id": 61576,
+        "nodeType": "ImportDirective",
+        "src": "273:65:109",
+        "nodes": [],
+        "absolutePath": "lib/v2-core/lib/prb-math/src/SD59x18.sol",
+        "file": "@prb/math/src/SD59x18.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 61584,
+        "sourceUnit": 55572,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 61573,
+              "name": "SD59x18",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 58539,
+              "src": "282:7:109",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          },
+          {
+            "foreign": {
+              "id": 61574,
+              "name": "sd",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 56338,
+              "src": "291:2:109",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          },
+          {
+            "foreign": {
+              "id": 61575,
+              "name": "sd59x18",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 56355,
+              "src": "295:7:109",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "id": 61579,
+        "nodeType": "ImportDirective",
+        "src": "339:58:109",
+        "nodes": [],
+        "absolutePath": "lib/v2-core/lib/prb-math/src/UD2x18.sol",
+        "file": "@prb/math/src/UD2x18.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 61584,
+        "sourceUnit": 55578,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 61577,
+              "name": "UD2x18",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 58910,
+              "src": "348:6:109",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          },
+          {
+            "foreign": {
+              "id": 61578,
+              "name": "ud2x18",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 58813,
+              "src": "356:6:109",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "id": 61583,
+        "nodeType": "ImportDirective",
+        "src": "398:65:109",
+        "nodes": [],
+        "absolutePath": "lib/v2-core/lib/prb-math/src/UD60x18.sol",
+        "file": "@prb/math/src/UD60x18.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 61584,
+        "sourceUnit": 55587,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 61580,
+              "name": "UD60x18",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 60714,
+              "src": "407:7:109",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          },
+          {
+            "foreign": {
+              "id": 61581,
+              "name": "ud",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 59173,
+              "src": "416:2:109",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          },
+          {
+            "foreign": {
+              "id": 61582,
+              "name": "ud60x18",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 59190,
+              "src": "420:7:109",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      }
+    ],
+    "license": "GPL-3.0-or-later"
+  },
+  "id": 109
+}

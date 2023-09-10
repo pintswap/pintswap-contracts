@@ -1,0 +1,248 @@
+{
+  "abi": [],
+  "bytecode": {
+    "object": "0x60556032600b8282823980515f1a607314602657634e487b7160e01b5f525f60045260245ffd5b305f52607381538281f3fe730000000000000000000000000000000000000000301460806040525f80fdfea264697066735822122037a34e9d4e586aa4c8cf759cda2e7637d6d8a53320146636cdb30e2b62fd5d0064736f6c63430008150033",
+    "sourceMap": "124:232:124:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;124:232:124;;;;;;;;;;;;;;;;;",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x730000000000000000000000000000000000000000301460806040525f80fdfea264697066735822122037a34e9d4e586aa4c8cf759cda2e7637d6d8a53320146636cdb30e2b62fd5d0064736f6c63430008150033",
+    "sourceMap": "124:232:124:-:0;;;;;;;;",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {},
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.21+commit.d9974bed\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"title\":\"Function for getting the current chain ID\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"src/erc721/libraries/ChainId.sol\":\"ChainId\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@openzeppelin/contracts/=lib/v2-core/lib/openzeppelin-contracts/contracts/\",\":@prb/math/=lib/v2-core/lib/prb-math/\",\":@prb/test/=lib/v2-core/lib/prb-test/src/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":erc4626-tests/=lib/openzeppelin-contracts-upgradeable/lib/erc4626-tests/\",\":forge-deploy-proxy/=lib/forge-deploy/examples/basic/lib/forge-deploy-proxy/src/\",\":forge-deploy/=lib/forge-deploy/contracts/\",\":forge-std/=lib/forge-std/src/\",\":openzeppelin-contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/\",\":openzeppelin/=lib/openzeppelin-contracts-upgradeable/contracts/\",\":prb-math/=lib/v2-core/lib/prb-math/src/\",\":prb-test/=lib/v2-core/lib/prb-test/src/\",\":solady/=lib/v2-core/lib/solady/\",\":solarray/=lib/v2-core/lib/solarray/src/\",\":uniswap-v2-core/=lib/uniswap-v2-core/contracts/\",\":uniswap-v2-periphery/=lib/uniswap-v2-periphery/contracts/\",\":v2-core/=lib/v2-core/\"]},\"sources\":{\"src/erc721/libraries/ChainId.sol\":{\"keccak256\":\"0xbf089e36c798708121cedf8110fbbffe3cdd33cab228d298436016d0e59568e0\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://eebbcd29a4c63e35a709cd743f637dd0f7d0869bdfe0b98e5afb628b939d3593\",\"dweb:/ipfs/QmVGMTBknQcohViZj9ivAoQvpwkmKfuX8iLJiXEKuPM9P5\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.21+commit.d9974bed"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        "@openzeppelin/contracts/=lib/v2-core/lib/openzeppelin-contracts/contracts/",
+        "@prb/math/=lib/v2-core/lib/prb-math/",
+        "@prb/test/=lib/v2-core/lib/prb-test/src/",
+        "ds-test/=lib/forge-std/lib/ds-test/src/",
+        "erc4626-tests/=lib/openzeppelin-contracts-upgradeable/lib/erc4626-tests/",
+        "forge-deploy-proxy/=lib/forge-deploy/examples/basic/lib/forge-deploy-proxy/src/",
+        "forge-deploy/=lib/forge-deploy/contracts/",
+        "forge-std/=lib/forge-std/src/",
+        "openzeppelin-contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/",
+        "openzeppelin-contracts/=lib/openzeppelin-contracts/",
+        "openzeppelin/=lib/openzeppelin-contracts-upgradeable/contracts/",
+        "prb-math/=lib/v2-core/lib/prb-math/src/",
+        "prb-test/=lib/v2-core/lib/prb-test/src/",
+        "solady/=lib/v2-core/lib/solady/",
+        "solarray/=lib/v2-core/lib/solarray/src/",
+        "uniswap-v2-core/=lib/uniswap-v2-core/contracts/",
+        "uniswap-v2-periphery/=lib/uniswap-v2-periphery/contracts/",
+        "v2-core/=lib/v2-core/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "src/erc721/libraries/ChainId.sol": "ChainId"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "src/erc721/libraries/ChainId.sol": {
+        "keccak256": "0xbf089e36c798708121cedf8110fbbffe3cdd33cab228d298436016d0e59568e0",
+        "urls": [
+          "bzz-raw://eebbcd29a4c63e35a709cd743f637dd0f7d0869bdfe0b98e5afb628b939d3593",
+          "dweb:/ipfs/QmVGMTBknQcohViZj9ivAoQvpwkmKfuX8iLJiXEKuPM9P5"
+        ],
+        "license": "GPL-2.0-or-later"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "src/erc721/libraries/ChainId.sol",
+    "id": 64450,
+    "exportedSymbols": {
+      "ChainId": [
+        64449
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "45:312:124",
+    "nodes": [
+      {
+        "id": 64439,
+        "nodeType": "PragmaDirective",
+        "src": "45:24:124",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          ">=",
+          "0.7",
+          ".0"
+        ]
+      },
+      {
+        "id": 64449,
+        "nodeType": "ContractDefinition",
+        "src": "124:232:124",
+        "nodes": [
+          {
+            "id": 64448,
+            "nodeType": "FunctionDefinition",
+            "src": "230:124:124",
+            "nodes": [],
+            "body": {
+              "id": 64447,
+              "nodeType": "Block",
+              "src": "285:69:124",
+              "nodes": [],
+              "statements": [
+                {
+                  "AST": {
+                    "nativeSrc": "304:44:124",
+                    "nodeType": "YulBlock",
+                    "src": "304:44:124",
+                    "statements": [
+                      {
+                        "nativeSrc": "318:20:124",
+                        "nodeType": "YulAssignment",
+                        "src": "318:20:124",
+                        "value": {
+                          "arguments": [],
+                          "functionName": {
+                            "name": "chainid",
+                            "nativeSrc": "329:7:124",
+                            "nodeType": "YulIdentifier",
+                            "src": "329:7:124"
+                          },
+                          "nativeSrc": "329:9:124",
+                          "nodeType": "YulFunctionCall",
+                          "src": "329:9:124"
+                        },
+                        "variableNames": [
+                          {
+                            "name": "chainId",
+                            "nativeSrc": "318:7:124",
+                            "nodeType": "YulIdentifier",
+                            "src": "318:7:124"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "evmVersion": "shanghai",
+                  "externalReferences": [
+                    {
+                      "declaration": 64444,
+                      "isOffset": false,
+                      "isSlot": false,
+                      "src": "318:7:124",
+                      "valueSize": 1
+                    }
+                  ],
+                  "id": 64446,
+                  "nodeType": "InlineAssembly",
+                  "src": "295:53:124"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 64441,
+              "nodeType": "StructuredDocumentation",
+              "src": "146:79:124",
+              "text": "@dev Gets the current chain ID\n @return chainId The current chain ID"
+            },
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "get",
+            "nameLocation": "239:3:124",
+            "parameters": {
+              "id": 64442,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "242:2:124"
+            },
+            "returnParameters": {
+              "id": 64445,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 64444,
+                  "mutability": "mutable",
+                  "name": "chainId",
+                  "nameLocation": "276:7:124",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 64448,
+                  "src": "268:15:124",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 64443,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "268:7:124",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "267:17:124"
+            },
+            "scope": 64449,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ChainId",
+        "contractDependencies": [],
+        "contractKind": "library",
+        "documentation": {
+          "id": 64440,
+          "nodeType": "StructuredDocumentation",
+          "src": "71:53:124",
+          "text": "@title Function for getting the current chain ID"
+        },
+        "fullyImplemented": true,
+        "linearizedBaseContracts": [
+          64449
+        ],
+        "name": "ChainId",
+        "nameLocation": "132:7:124",
+        "scope": 64450,
+        "usedErrors": [],
+        "usedEvents": []
+      }
+    ],
+    "license": "GPL-2.0-or-later"
+  },
+  "id": 124
+}

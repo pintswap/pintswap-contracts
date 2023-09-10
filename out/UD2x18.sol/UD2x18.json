@@ -1,0 +1,162 @@
+{
+  "abi": [],
+  "bytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "ast": {
+    "absolutePath": "lib/v2-core/lib/prb-math/src/UD2x18.sol",
+    "id": 55578,
+    "exportedSymbols": {
+      "Casting": [
+        58908
+      ],
+      "Common": [
+        58614
+      ],
+      "E": [
+        58859
+      ],
+      "Errors": [
+        58615
+      ],
+      "MAX_UD2x18": [
+        58870
+      ],
+      "PI": [
+        58878
+      ],
+      "PRBMath_UD2x18_IntoSD1x18_Overflow": [
+        58899
+      ],
+      "PRBMath_UD2x18_IntoUint40_Overflow": [
+        58905
+      ],
+      "SD1x18": [
+        55982
+      ],
+      "SD59x18": [
+        58539
+      ],
+      "UD2x18": [
+        58910
+      ],
+      "UD60x18": [
+        60714
+      ],
+      "UNIT": [
+        58889
+      ],
+      "intoSD1x18": [
+        58669
+      ],
+      "intoSD59x18": [
+        58696
+      ],
+      "intoUD60x18": [
+        58717
+      ],
+      "intoUint128": [
+        58737
+      ],
+      "intoUint256": [
+        58757
+      ],
+      "intoUint40": [
+        58796
+      ],
+      "uMAX_SD1x18": [
+        55899
+      ],
+      "uMAX_UD2x18": [
+        58863
+      ],
+      "uUNIT": [
+        58882
+      ],
+      "ud2x18": [
+        58813
+      ],
+      "unwrap": [
+        58830
+      ],
+      "wrap": [
+        58847
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "32:1848:78",
+    "nodes": [
+      {
+        "id": 55573,
+        "nodeType": "PragmaDirective",
+        "src": "32:25:78",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          ">=",
+          "0.8",
+          ".19"
+        ]
+      },
+      {
+        "id": 55574,
+        "nodeType": "ImportDirective",
+        "src": "1753:30:78",
+        "nodes": [],
+        "absolutePath": "lib/v2-core/lib/prb-math/src/ud2x18/Casting.sol",
+        "file": "./ud2x18/Casting.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 55578,
+        "sourceUnit": 58848,
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "id": 55575,
+        "nodeType": "ImportDirective",
+        "src": "1784:32:78",
+        "nodes": [],
+        "absolutePath": "lib/v2-core/lib/prb-math/src/ud2x18/Constants.sol",
+        "file": "./ud2x18/Constants.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 55578,
+        "sourceUnit": 58890,
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "id": 55576,
+        "nodeType": "ImportDirective",
+        "src": "1817:29:78",
+        "nodes": [],
+        "absolutePath": "lib/v2-core/lib/prb-math/src/ud2x18/Errors.sol",
+        "file": "./ud2x18/Errors.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 55578,
+        "sourceUnit": 58906,
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "id": 55577,
+        "nodeType": "ImportDirective",
+        "src": "1847:32:78",
+        "nodes": [],
+        "absolutePath": "lib/v2-core/lib/prb-math/src/ud2x18/ValueType.sol",
+        "file": "./ud2x18/ValueType.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 55578,
+        "sourceUnit": 58921,
+        "symbolAliases": [],
+        "unitAlias": ""
+      }
+    ],
+    "license": "MIT"
+  },
+  "id": 78
+}
