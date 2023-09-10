@@ -8,17 +8,12 @@ contract Reverts is Common {
     function setUp() public {
         initializeMainnetFork();
         setUpBase();
-        //send pint to address(100)
-        vm.startPrank(treasury);
-        pint.transfer(address(100), 1 ether);
-        vm.stopPrank();
     }
 
     function testRevertOnWrongFinna() public {
         vm.startPrank(treasury);
         pint.enableTrading();
         opps.mint(address(100), 0);
-        vm.stopPrank();
         vm.startPrank(address(100));
         pint.approve(address(vePint), ~uint256(1));
         vm.stopPrank();
