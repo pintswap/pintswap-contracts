@@ -4,7 +4,7 @@ pragma solidity >=0.8.7 <0.9.0;
 import {Test} from "forge-std/Test.sol";
 import {PINT} from "../PINT.sol";
 import {sipERC20} from "../sipERC20.sol";
-import {PINTDeploy} from "../PINTDeployer.sol";
+import {PINTDeployer} from "../PINTDeployer.sol";
 import {WOCKRedemption} from "../WOCKRedemption.sol";
 import {TRISRedemption} from "../TRISRedemption.sol";
 import {ComputeCreateAddress} from "../utils/ComputeCreateAddress.sol";
@@ -24,7 +24,7 @@ contract Common is Test {
 
     PINT pint;
     sipERC20 vePint;
-    PINTDeploy pintDeploy;
+    PINTDeployer pintDeploy;
     OPPS opps;
     address pair;
     WOCKRedemption wockRedemption;
@@ -43,7 +43,7 @@ contract Common is Test {
 
     function setUpBase() public {
         vm.startPrank(0x94e1f974E82fda48cC37F6144F5a921c9Bca659C);
-        pintDeploy = new PINTDeploy(treasury);
+        pintDeploy = new PINTDeployer(treasury);
         assertEq(
             address(pintDeploy),
             0xd665F1153599e8F799b2514069dF4481d3bcb043
