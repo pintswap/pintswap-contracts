@@ -7,6 +7,7 @@ import {PINTDeploy} from "../PintDeployer.sol";
 import {PINT} from "../PINT.sol";
 import {vePINT} from "../vePINT.sol";
 import {console2} from "forge-std/console2.sol";
+import {ComputeCreateAddress} from "../utils/ComputeCreateAddress.sol";
 
 contract PintDeployerTest is Common {
     PINT pint;
@@ -17,8 +18,14 @@ contract PintDeployerTest is Common {
         initializeMainnetFork();
         setUpBase();
         pintDeploy = new PINTDeploy();
-        pint = PINT(payable(getCreateAddress(address(pintDeploy), 2)));
-        vePint = vePINT((getCreateAddress(address(pintDeploy), 4)));
+        pint = PINT(
+            payable(
+                ComputeCreateAddress.getCreateAddress(address(pintDeploy), 2)
+            )
+        );
+        vePint = vePINT(
+            (ComputeCreateAddress.getCreateAddress(address(pintDeploy), 4))
+        );
     }
 
     function testBasicRun() public {
