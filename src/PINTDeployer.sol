@@ -7,6 +7,7 @@ import {IUniswapV2Factory} from "uniswap-v2-core/interfaces/IUniswapV2Factory.so
 import {UniswapV2PairComputeLibrary} from "./libraries/UniswapV2PairComputeLibrary.sol";
 import {ComputeCreateAddress} from "./utils/ComputeCreateAddress.sol";
 import {PINT} from "./PINT.sol";
+import {OPPS} from "./OPPS.sol";
 import {vePINT} from "./vePINT.sol";
 import {console2} from "forge-std/console2.sol";
 
@@ -20,22 +21,15 @@ contract PINTDeploy {
         ProxyAdmin proxy = new ProxyAdmin();
         address pintAddress = ComputeCreateAddress.getCreateAddress(
             address(this),
-            5
+            4
         );
         address pair = UniswapV2PairComputeLibrary.pairFor(
             address(factory),
             pintAddress,
             weth
         );
-        address veLogic = address(new vePINT());
-        address ve = address(
-            new TransparentUpgradeableProxy(
-                veLogic,
-                address(proxy),
-                abi.encodeWithSelector(vePINT.initialize.selector, pair)
-            )
-        );
-        address pintLogic = address(new PINT(pair, ve));
+        address opps = address(new OPPS());
+        address pintLogic = address(new PINT(pair, OPPS(opps).vaultFor(pintAddress)));
         address pint = address(
             new TransparentUpgradeableProxy(
                 pintLogic,
@@ -43,6 +37,7 @@ contract PINTDeploy {
                 abi.encodeWithSelector(PINT.initialize.selector)
             )
         );
+        OPPS(opps).deployVault(pintAddress);
         require(pint == pintAddress, "!pint-address");
         address actualPairAddress = address(factory.createPair(pint, weth));
         require(pair == actualPairAddress, "!pair-address");
