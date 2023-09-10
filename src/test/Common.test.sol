@@ -5,7 +5,8 @@ import {Test} from "forge-std/Test.sol";
 import {PINT} from "../PINT.sol";
 import {sipERC20} from "../sipERC20.sol";
 import {PINTDeploy} from "../PINTDeployer.sol";
-import {PINTRedemption} from "../PINTRedemption.sol";
+import {WOCKRedemption} from "../WOCKRedemption.sol";
+import {TRISRedemption} from "../TRISRedemption.sol";
 import {ComputeCreateAddress} from "../utils/ComputeCreateAddress.sol";
 import {OPPS} from "../OPPS.sol";
 import {IERC20Metadata} from "openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol";
@@ -25,7 +26,8 @@ contract Common is Test {
     PINTDeploy pintDeploy;
     OPPS opps;
     address pair;
-    PINTRedemption redemption;
+    WOCKRedemption wockRedemption;
+    TRISRedemption trisRedemption;
     IERC721 wock = IERC721(0xcB72ed407Cdb97a7161a2b567b5f50B55585Ee6b);
     IERC721 tris = IERC721(0x0055485fCa054D165fc0C7D836459722436544c1);
 
@@ -49,7 +51,10 @@ contract Common is Test {
         pint = PINT(payable(0x35409176FD2ffEB23786c2a6EF5b05184c6EDBa7));
         opps = OPPS(0x66316fC4371A59238D9a54c9Acb382a4B977BF8E);
         vePint = sipERC20(PINT(pint).ve());
-        redemption = PINTRedemption(
+        wockRedemption = WOCKRedemption(
+            ComputeCreateAddress.getCreateAddress(address(pintDeploy), 5)
+        );
+        trisRedemption = TRISRedemption(
             ComputeCreateAddress.getCreateAddress(address(pintDeploy), 5)
         );
         //send pint to address(100)

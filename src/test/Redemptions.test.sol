@@ -13,4 +13,8 @@ contract RedemptionTest is Common {
         //TODO: this later
         vm.prank(address(100));
     }
+
+    function testSablierStream() public {
+        //TODO this
+    }
 }

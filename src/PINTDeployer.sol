@@ -6,7 +6,8 @@ import {ProxyAdmin} from "openzeppelin-contracts/contracts/proxy/transparent/Pro
 import {IUniswapV2Factory} from "uniswap-v2-core/interfaces/IUniswapV2Factory.sol";
 import {UniswapV2PairComputeLibrary} from "./libraries/UniswapV2PairComputeLibrary.sol";
 import {ComputeCreateAddress} from "./utils/ComputeCreateAddress.sol";
-import {PINTRedemption} from "./PINTRedemption.sol";
+import {WOCKRedemption} from "./WOCKRedemption.sol";
+import {TRISRedemption} from "./TRISRedemption.sol";
 import {PINT} from "./PINT.sol";
 import {OPPS} from "./OPPS.sol";
 
@@ -39,7 +40,8 @@ contract PINTDeploy {
                 abi.encodeWithSelector(PINT.initialize.selector)
             )
         );
-        new PINTRedemption(pint);
+        new WOCKRedemption(pint);
+        new TRISRedemption(pint);
         OPPS(opps).deployVault(pintAddress);
         OPPS(opps).transferOwnership(oppsOwner);
         require(pint == pintAddress, "!pint-address");
