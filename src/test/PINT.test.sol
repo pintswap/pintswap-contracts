@@ -12,7 +12,6 @@ contract PintTest is Common {
     }
 
     function testPintLimits() public {
-        uint maxTx = pint.maxTransactionAmount();
         uint maxWallet = pint.maxWallet();
         vm.startPrank(treasury);
         pint.enableTrading();
@@ -29,7 +28,6 @@ contract PintTest is Common {
     }
 
     function testPintFees() public {
-        uint maxWallet = pint.maxWallet();
         vm.startPrank(treasury);
         pint.enableTrading();
         pint.setAutomatedMarketMakerPair(address(200), true);
@@ -42,7 +40,11 @@ contract PintTest is Common {
         assertEq(pint.balanceOf(address(pint)), ((1 ether) * 5) / 100);
     }
 
-    function testPintTrading() public {}
-
-    function testBlacklist() public {}
+    function testBlacklist() public {
+        vm.startPrank(treasury);
+        pint.blacklist(address(100));
+        vm.startPrank(address(100));
+        vm.expectRevert(bytes("Sender blacklisted"));
+        pint.transfer(address(200), 1 ether);
+    }
 }
