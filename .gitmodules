@@ -16,3 +16,6 @@
 [submodule "lib/forge-deploy"]
 	path = lib/forge-deploy
 	url = https://github.com/wighawag/forge-deploy
+[submodule "lib/v2-core"]
+	path = lib/v2-core
+	url = https://github.com/sablier-labs/v2-core
