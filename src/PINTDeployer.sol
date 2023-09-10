@@ -8,8 +8,6 @@ import {UniswapV2PairComputeLibrary} from "./libraries/UniswapV2PairComputeLibra
 import {ComputeCreateAddress} from "./utils/ComputeCreateAddress.sol";
 import {PINT} from "./PINT.sol";
 import {OPPS} from "./OPPS.sol";
-import {vePINT} from "./vePINT.sol";
-import {console2} from "forge-std/console2.sol";
 
 contract PINTDeploy {
     IUniswapV2Factory constant factory =

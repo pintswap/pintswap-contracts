@@ -93,7 +93,7 @@ contract PINT is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
     function initialize() public initializer {
         __ERC20_init_unchained("PINT", "PINT");
         __ERC20Permit_init_unchained("PINT");
-        __Ownable_init_unchained();
+        __Ownable_init();
         limitsInEffect = true;
         preMigrationPhase = true;
         excludeFromMaxTransaction(address(router), true);

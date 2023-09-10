@@ -11,6 +11,7 @@ contract OPPS is ERC721Permit, Ownable {
     mapping(uint256 => uint256) public nonces;
     mapping(bytes32 => bool) public nameTaken;
     address public immutable sipImplementation;
+    bytes32 public immutable sipHash;
 
     function version() public pure returns (string memory) {
         return "1";
@@ -19,26 +20,26 @@ contract OPPS is ERC721Permit, Ownable {
     string private __baseURI;
     modifier onlySIP() {
         require(sipERC20(msg.sender).opps() == address(this), "!opps");
-        bytes32 expected;
-        bytes32 actual;
-        address impl = sipImplementation;
+        bytes32 hash;
         assembly {
-          expected := extcodehash(impl)
-          actual := extcodehash(caller())
+          hash := extcodehash(caller())
         }
         require(
-            expected == actual,
+            hash == sipHash,
             "!sip"
         );
         _;
     }
 
-    function deployVault(address asset) public {
-        ClonesUpgradeable.cloneDeterministic(
+    function _deployClone(address asset) internal returns (address clone) {
+        clone = ClonesUpgradeable.cloneDeterministic(
             sipImplementation,
             bytes32(uint256(uint160(asset)))
         );
-        sipERC20(sipImplementation).initialize(asset);
+    }
+    function deployVault(address asset) public returns (address clone) {
+        clone = _deployClone(asset);
+        sipERC20(clone).initialize(asset);
     }
 
     function vaultFor(address asset) public view returns (address) {
@@ -54,6 +55,12 @@ contract OPPS is ERC721Permit, Ownable {
             "ipfs://bafybeiezpbqq6favps74erwn35ircae2xqqdmczxjs7imosdkn6ahmuxme/"
         );
         sipImplementation = address(new sipERC20());
+        bytes32 _sipHash;
+        address clone = _deployClone(address(0x0));
+        assembly {
+          _sipHash := extcodehash(clone)
+        }
+        sipHash = _sipHash;
     }
 
     function _baseURI() internal view override returns (string memory) {
