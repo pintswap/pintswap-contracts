@@ -53,12 +53,8 @@ contract Common is Test {
         opps = OPPS(0xd665F1153599e8F799b2514069dF4481d3bcb043);
         opps.transferOwnership(treasury);
         vePint = sipERC20(PINT(pint).ve());
-        wockRedemption = WOCKRedemption(
-            ComputeCreateAddress.getCreateAddress(address(pintDeploy), 5)
-        );
-        trisRedemption = TRISRedemption(
-            ComputeCreateAddress.getCreateAddress(address(pintDeploy), 6)
-        );
+        wockRedemption = new WOCKRedemption(address(pint));
+        trisRedemption = new TRISRedemption(address(pint));
         //send pint to address(100)
         vm.startPrank(treasury);
         pint.transfer(address(100), 1 ether);
