@@ -43,13 +43,15 @@ contract Common is Test {
 
     function setUpBase() public {
         vm.startPrank(0x94e1f974E82fda48cC37F6144F5a921c9Bca659C);
+        new OPPS();
         pintDeploy = new PINTDeployer();
         assertEq(
             address(pintDeploy),
-            0xd665F1153599e8F799b2514069dF4481d3bcb043
+            0x754fbB8c61140048714e6426b7F56f8bb512415B
         );
-        pint = PINT(payable(0x35409176FD2ffEB23786c2a6EF5b05184c6EDBa7));
-        opps = OPPS(0x66316fC4371A59238D9a54c9Acb382a4B977BF8E);
+        pint = PINT(payable(0x58fB30A61C218A3607e9273D52995a49fF2697Ee));
+        opps = OPPS(0xd665F1153599e8F799b2514069dF4481d3bcb043);
+        opps.transferOwnership(treasury);
         vePint = sipERC20(PINT(pint).ve());
         wockRedemption = WOCKRedemption(
             ComputeCreateAddress.getCreateAddress(address(pintDeploy), 5)
