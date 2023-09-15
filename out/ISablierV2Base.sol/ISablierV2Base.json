@@ -1,0 +1,1499 @@
+{
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "admin",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "contract IERC20",
+          "name": "asset",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint128",
+          "name": "protocolRevenues",
+          "type": "uint128"
+        }
+      ],
+      "name": "ClaimProtocolRevenues",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "admin",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "contract ISablierV2Comptroller",
+          "name": "oldComptroller",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "contract ISablierV2Comptroller",
+          "name": "newComptroller",
+          "type": "address"
+        }
+      ],
+      "name": "SetComptroller",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "oldAdmin",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newAdmin",
+          "type": "address"
+        }
+      ],
+      "name": "TransferAdmin",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "MAX_FEE",
+      "outputs": [
+        {
+          "internalType": "UD60x18",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "admin",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract IERC20",
+          "name": "asset",
+          "type": "address"
+        }
+      ],
+      "name": "claimProtocolRevenues",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "comptroller",
+      "outputs": [
+        {
+          "internalType": "contract ISablierV2Comptroller",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract IERC20",
+          "name": "asset",
+          "type": "address"
+        }
+      ],
+      "name": "protocolRevenues",
+      "outputs": [
+        {
+          "internalType": "uint128",
+          "name": "revenues",
+          "type": "uint128"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract ISablierV2Comptroller",
+          "name": "newComptroller",
+          "type": "address"
+        }
+      ],
+      "name": "setComptroller",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newAdmin",
+          "type": "address"
+        }
+      ],
+      "name": "transferAdmin",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "MAX_FEE()": "bc063e1a",
+    "admin()": "f851a440",
+    "claimProtocolRevenues(address)": "a6202bf2",
+    "comptroller()": "5fe3b567",
+    "protocolRevenues(address)": "39a73c03",
+    "setComptroller(address)": "8bad38dd",
+    "transferAdmin(address)": "75829def"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.21+commit.d9974bed\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"admin\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"contract IERC20\",\"name\":\"asset\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint128\",\"name\":\"protocolRevenues\",\"type\":\"uint128\"}],\"name\":\"ClaimProtocolRevenues\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"admin\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"contract ISablierV2Comptroller\",\"name\":\"oldComptroller\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"contract ISablierV2Comptroller\",\"name\":\"newComptroller\",\"type\":\"address\"}],\"name\":\"SetComptroller\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"oldAdmin\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newAdmin\",\"type\":\"address\"}],\"name\":\"TransferAdmin\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"MAX_FEE\",\"outputs\":[{\"internalType\":\"UD60x18\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"admin\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract IERC20\",\"name\":\"asset\",\"type\":\"address\"}],\"name\":\"claimProtocolRevenues\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"comptroller\",\"outputs\":[{\"internalType\":\"contract ISablierV2Comptroller\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract IERC20\",\"name\":\"asset\",\"type\":\"address\"}],\"name\":\"protocolRevenues\",\"outputs\":[{\"internalType\":\"uint128\",\"name\":\"revenues\",\"type\":\"uint128\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract ISablierV2Comptroller\",\"name\":\"newComptroller\",\"type\":\"address\"}],\"name\":\"setComptroller\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newAdmin\",\"type\":\"address\"}],\"name\":\"transferAdmin\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"events\":{\"ClaimProtocolRevenues(address,address,uint128)\":{\"params\":{\"admin\":\"The address of the contract admin.\",\"asset\":\"The contract address of the ERC-20 asset the protocol revenues have been claimed for.\",\"protocolRevenues\":\"The amount of protocol revenues claimed, denoted in units of the asset's decimals.\"}},\"SetComptroller(address,address,address)\":{\"params\":{\"admin\":\"The address of the contract admin.\",\"newComptroller\":\"The address of the new comptroller contract.\",\"oldComptroller\":\"The address of the old comptroller contract.\"}},\"TransferAdmin(address,address)\":{\"params\":{\"newAdmin\":\"The address of the new admin.\",\"oldAdmin\":\"The address of the old admin.\"}}},\"kind\":\"dev\",\"methods\":{\"MAX_FEE()\":{\"details\":\"This value is hard coded as a constant.\"},\"claimProtocolRevenues(address)\":{\"details\":\"Emits a {ClaimProtocolRevenues} event. Requirements: - `msg.sender` must be the contract admin.\",\"params\":{\"asset\":\"The contract address of the ERC-20 asset for which to claim protocol revenues.\"}},\"protocolRevenues(address)\":{\"params\":{\"asset\":\"The contract address of the ERC-20 asset to query.\"}},\"setComptroller(address)\":{\"details\":\"Emits a {SetComptroller} event. Notes: - Does not revert if the comptroller is the same. Requirements: - `msg.sender` must be the contract admin.\",\"params\":{\"newComptroller\":\"The address of the new comptroller contract.\"}},\"transferAdmin(address)\":{\"details\":\"Notes: - Does not revert if the admin is the same. - This function can potentially leave the contract without an admin, thereby removing any functionality that is only available to the admin. Requirements: - `msg.sender` must be the contract admin.\",\"params\":{\"newAdmin\":\"The address of the new admin.\"}}},\"title\":\"ISablierV2Base\",\"version\":1},\"userdoc\":{\"events\":{\"ClaimProtocolRevenues(address,address,uint128)\":{\"notice\":\"Emitted when the admin claims all protocol revenues accrued for a particular ERC-20 asset.\"},\"SetComptroller(address,address,address)\":{\"notice\":\"Emitted when the admin sets a new comptroller contract.\"},\"TransferAdmin(address,address)\":{\"notice\":\"Emitted when the admin is transferred.\"}},\"kind\":\"user\",\"methods\":{\"MAX_FEE()\":{\"notice\":\"Retrieves the maximum fee that can be charged by the protocol or a broker, denoted as a fixed-point number where 1e18 is 100%.\"},\"admin()\":{\"notice\":\"The address of the admin account or contract.\"},\"claimProtocolRevenues(address)\":{\"notice\":\"Claims all accumulated protocol revenues for the provided ERC-20 asset.\"},\"comptroller()\":{\"notice\":\"Retrieves the address of the comptroller contract, responsible for the Sablier V2 protocol configuration.\"},\"protocolRevenues(address)\":{\"notice\":\"Retrieves the protocol revenues accrued for the provided ERC-20 asset, in units of the asset's decimals.\"},\"setComptroller(address)\":{\"notice\":\"Assigns a new comptroller contract responsible for the protocol configuration.\"},\"transferAdmin(address)\":{\"notice\":\"Transfers the contract admin to a new address.\"}},\"notice\":\"Base logic for all Sablier V2 streaming contracts.\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"lib/v2-core/src/interfaces/ISablierV2Base.sol\":\"ISablierV2Base\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@openzeppelin/contracts/=lib/v2-core/lib/openzeppelin-contracts/contracts/\",\":@prb/math/=lib/v2-core/lib/prb-math/\",\":@prb/test/=lib/v2-core/lib/prb-test/src/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":erc4626-tests/=lib/openzeppelin-contracts-upgradeable/lib/erc4626-tests/\",\":forge-deploy-proxy/=lib/forge-deploy/examples/basic/lib/forge-deploy-proxy/src/\",\":forge-deploy/=lib/forge-deploy/contracts/\",\":forge-std/=lib/forge-std/src/\",\":openzeppelin-contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/\",\":openzeppelin/=lib/openzeppelin-contracts-upgradeable/contracts/\",\":prb-math/=lib/v2-core/lib/prb-math/src/\",\":prb-test/=lib/v2-core/lib/prb-test/src/\",\":solady/=lib/v2-core/lib/solady/\",\":solarray/=lib/v2-core/lib/solarray/src/\",\":uniswap-v2-core/=lib/uniswap-v2-core/contracts/\",\":uniswap-v2-periphery/=lib/uniswap-v2-periphery/contracts/\",\":v2-core/=lib/v2-core/\"]},\"sources\":{\"lib/v2-core/lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0xa426add89e9b4785ddeeb07b4d9352b57de8b4cb314c8cb8f0d5898938bd8de9\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://09852a830ad29d33cfdf74e7035853c68e43e1a8c242b25db9d656a074a54e6d\",\"dweb:/ipfs/QmeRSfQwWr3vyP2uJxnjybtPYLMiD17E51d4eMhXQh93R1\"]},\"lib/v2-core/lib/prb-math/src/Common.sol\":{\"keccak256\":\"0x8c348a8711a5036ca64904ff546fb0c27a11143e3a1c1217ea22e1cebd08b126\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://db9000ccca882c9a4d78cb18b80e10ab6c19a9765cd57638c462b7e526c54a80\",\"dweb:/ipfs/QmYkM5pmgMrjau6YMNrNvrwSBEytc9jT8jGb2YdxhB4woe\"]},\"lib/v2-core/lib/prb-math/src/UD60x18.sol\":{\"keccak256\":\"0xdd6ee8bbbb9f4c288aa1455685e0dfd81c54aaec976f05ddf003d2b8f0c89639\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c574478b6f297ae9236ca342d755f6bb5163a4a2dac7f5f6a09ffb34a55069de\",\"dweb:/ipfs/QmQNfbjhqSwKLusdkhAukxnAMfavWqbBxpQ2MtiZR6LkSk\"]},\"lib/v2-core/lib/prb-math/src/sd1x18/Casting.sol\":{\"keccak256\":\"0xeb29a206d3c96b2c9b897e4bcec586e2ad6f91825f9e14601d9ee01c24e493ed\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7279879074ecb41f116f07bb437849f3597a65e44e7facb0d8936e333674537f\",\"dweb:/ipfs/QmTpC8zBrFN7PjPoYBH2RGYWaA6hxaAS9kS9Bwzm7zBogV\"]},\"lib/v2-core/lib/prb-math/src/sd1x18/Constants.sol\":{\"keccak256\":\"0x309c5b7cda602e140f3f8332d2e449b8abec0fa7bf81b67b9c98e1cf28aa8e8b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://209d57cfff646b020ed1af00df92f0b5e0a73fdac56fcc7d0ceb5e4365fefaf2\",\"dweb:/ipfs/QmdDtHpQK2sBAugSmuf1iBdZRg35Ygv3vradVhdbhikGUM\"]},\"lib/v2-core/lib/prb-math/src/sd1x18/Errors.sol\":{\"keccak256\":\"0x72058e9cd109aa432cd8beccbdca9398389599151dc5dbc2d84eeafa289c792c\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://2a85b24b61de3288fdc2ed0bb3acccec390b02b68d15b32c9c8c11aa368f700f\",\"dweb:/ipfs/Qme7iL75jWiTKKRSZt6p3FMtyY2mnoxcdJygS4ycf2m5Qq\"]},\"lib/v2-core/lib/prb-math/src/sd1x18/ValueType.sol\":{\"keccak256\":\"0xdcde09130ea4ce86fadd88bbdb3e740c69dc86ce5239957694a8343e6ff9644a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://bbf356aa75e0525e9cf22cccc3151d955a9e78f91eb2c88f2744b09f9ef80079\",\"dweb:/ipfs/QmUMaVrFuidro7TvgGNBdHpFHzSA2DRVsMVAygEdQyL1Ct\"]},\"lib/v2-core/lib/prb-math/src/sd59x18/Casting.sol\":{\"keccak256\":\"0x3a632d2ae4779370b02d4f43a4ec6e3808528c2e09055e803ed87df983cad35e\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://832ec36c135ff7ddb0bd93ca462aea4eb4521f1daddf4107a690e0c7b94214ec\",\"dweb:/ipfs/Qmcj9uXDMVX97wGbu44NDGLdcTCuuVRhPF4vhr3UjjeLrd\"]},\"lib/v2-core/lib/prb-math/src/sd59x18/Constants.sol\":{\"keccak256\":\"0x312e75443376ff6bc05125c16ea1a722a80ed6a6a2a7b020678c38213a70162a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a438ac6c4856d78541746484c1a5e1398ff6b505862058c89e90febdffc28f72\",\"dweb:/ipfs/QmYhRQ33bdLWSqbySqKQtu9fzKpQrEXEKzuS1TFwyMtbDg\"]},\"lib/v2-core/lib/prb-math/src/sd59x18/Errors.sol\":{\"keccak256\":\"0x71a19d407221fcea92fcac522d36010ba42c3ce2ed7d4a1eec283bd5ac0cf9e2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://996ad3941b48e86433352d2ad8b19eafd3ff2454983bd8ffea28d37d6c4447cc\",\"dweb:/ipfs/QmV2VSpQimdngfY5fx8SVARDecJdN19TPjbFckUAAoGcKM\"]},\"lib/v2-core/lib/prb-math/src/sd59x18/Helpers.sol\":{\"keccak256\":\"0xc8b24ba940189a13418aae6c1483a7b9acde1d35a99ee0134f6d58ec05c524c8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d71dc8cbded4150cc3db9612123892e4ee79e6a37d106c40f406054ba4035792\",\"dweb:/ipfs/QmeyY1XasbY2iE997mjDyzUKYCfdsppnRQV3FvvYF5uhiw\"]},\"lib/v2-core/lib/prb-math/src/sd59x18/Math.sol\":{\"keccak256\":\"0x561694ead1deae45027c5851c24eab53dc9f8a7eb8c623fdf5eebe56dd9da20a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://1dc6789db7d57ce54bc82c5aa74623dc12c3e0cafbaf921940788d0f502a66c5\",\"dweb:/ipfs/QmeiDrGFSCGNk99ggThYVE4pEaEAgb4LmxgZZKq4GWS2Sv\"]},\"lib/v2-core/lib/prb-math/src/sd59x18/ValueType.sol\":{\"keccak256\":\"0xaf4cc89130b6ce22ae7e1d1bd8d912019278d7d9b35e37bb211aa78cc1b7ff32\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://1c535c057358dda38d58c596272ad505811563bcfad51545ae82f0e9d0e39cb9\",\"dweb:/ipfs/QmVDTjMFxzZqtmLEQm55KaPy6hytAqG7Ve2tYzvYCvswcv\"]},\"lib/v2-core/lib/prb-math/src/ud2x18/Casting.sol\":{\"keccak256\":\"0x395a47779cf0a9358b9998a5ebfc48a0dc07062e4f6a5d3ac536f7870e43691e\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://f626199e5bc02936ac2520ff4d2f26ff318536e83e47b9880f558b85114282d3\",\"dweb:/ipfs/QmaqVnsvezFpoYoYDhFoskKFvUL37DW6Hwry5ktvkX5KvJ\"]},\"lib/v2-core/lib/prb-math/src/ud2x18/Constants.sol\":{\"keccak256\":\"0xe7cad7b8cb3daa6d124e5b4b9aff8148bb4b573f5ead0b8ffe16f8548c1a8587\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b8c477fb4a12612276c5746052897fce01cf6ad0f31cc8e6b19b7e125ef41bb5\",\"dweb:/ipfs/QmWENWZ15cTVByU2ixuHbNdk5EjCaawkstTbn7vNnRzZtU\"]},\"lib/v2-core/lib/prb-math/src/ud2x18/Errors.sol\":{\"keccak256\":\"0x28e16c14bae589f4d257726a7b6d89ec03112712beaf0f91b33c0a188519fe87\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://e80ca782d9ea4e5f1ba02981ec5bba4df740912b192e1a2b119e6fa920c45aea\",\"dweb:/ipfs/QmYhdVYTh67Mbh77aQMHt1UTbJKuuhHeT4nhCbKCAM3HEr\"]},\"lib/v2-core/lib/prb-math/src/ud2x18/ValueType.sol\":{\"keccak256\":\"0xc8590c817624727ad369239cdf304b71015041714d6bf2f88569797742be628c\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6e9d4071f4c97d4582e6cc0290254e798593185bc0b0c4d399758677e5253921\",\"dweb:/ipfs/QmUjpqj1Y9wnmgVhtPQXTJ7eW1wwhfaWJbHRCrxZ2niQ3T\"]},\"lib/v2-core/lib/prb-math/src/ud60x18/Casting.sol\":{\"keccak256\":\"0xbdce3b69f27fb198ea084b5df90a83075a61e9fee7021da2e556fa7c8a7574cd\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0b09c907651b797384f53009e70a11fd6c7a795a85158e872598f13c337500b2\",\"dweb:/ipfs/QmUKCfKrcsbsR1QqhDpsC7NanQhPyuoVa3KS78Lqy83Lfi\"]},\"lib/v2-core/lib/prb-math/src/ud60x18/Constants.sol\":{\"keccak256\":\"0x3d2219fe39162d051d993702598c15a2735784fff0c0d2dadea1b02a51cb20f0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://176f0175397a2965f2b1380c9f97cdcffdafaa7f2d3585c5db26d61b4902299e\",\"dweb:/ipfs/QmbuGa84ah972Qa2JBFHbE4aLoN6cx1J8hDLztzStGrRMf\"]},\"lib/v2-core/lib/prb-math/src/ud60x18/Conversions.sol\":{\"keccak256\":\"0xa949472633cc36fa8d2714e167ff71b51198358bf3f6117d038350e14f30cec8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://3f2d3b3631b3b43cd43f3ef41c2912582eb7bd56c83dfab417adf1a7afa81fd4\",\"dweb:/ipfs/QmfDFXkXLYp1skMZ6CBnYkL3aJKdVPfC9SnfcSSwbkJ2Wm\"]},\"lib/v2-core/lib/prb-math/src/ud60x18/Errors.sol\":{\"keccak256\":\"0x3a25f4e18a8a69fa9ac84f826bbfa4b6535788ae9a26623cc848e169e5d842ad\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://8b34b02e146128930fa73b3a2de2f22c27dbf180012096d2602256263fdda18a\",\"dweb:/ipfs/QmQ46FQ2arioGSwAePLiLDGv6CBtkrqdJAifV7MFPqfPPu\"]},\"lib/v2-core/lib/prb-math/src/ud60x18/Helpers.sol\":{\"keccak256\":\"0x24c9c09d2dd73770c516a4f08296aa9e83b6431b52d97990a726c41c8aa2746f\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://e5ec749ccb50bd3420346951875c2a0bb6469e90190c82630de6b2117a8fad29\",\"dweb:/ipfs/QmT4dgxVtbwMbSLyFRXeyYzfda7AvMyRUVZzd6yUS8qr7C\"]},\"lib/v2-core/lib/prb-math/src/ud60x18/Math.sol\":{\"keccak256\":\"0xb9c4ab4753274baf1cc88b90da04b1308445c074eb94d7ab229109d78602497b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://e80843aeb21429a0c12dfd22f2f1d69478de32b8cb17b312e86fa2b0cfe50f7e\",\"dweb:/ipfs/QmdY293FrZb9KeaHTfq7wMXpQWinqFHhiLaSyQLKNcWs8w\"]},\"lib/v2-core/lib/prb-math/src/ud60x18/ValueType.sol\":{\"keccak256\":\"0x3a2ada6e87a1c61d3a58e7ff9d5ea9eee00a4cca8b350a9d461e3bb2867693f2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://021a34174b566e8575ce7f9d8f93f3e96c8fa748192bc5f9b4bdc049ce6675cc\",\"dweb:/ipfs/QmXa6CXbEnf7K64phvDePsjznomBWZMkCg5nGn81KuwFf2\"]},\"lib/v2-core/src/interfaces/IAdminable.sol\":{\"keccak256\":\"0x289bd3a74cb971dd3928c44d194d9b75939d75494901df32512b5ccbc0ed8cb0\",\"license\":\"GPL-3.0-or-later\",\"urls\":[\"bzz-raw://634a0098bc40a927bbefe46f6f2d8a5d94f9f92c5bad0149e4c7da67b0731bc7\",\"dweb:/ipfs/QmVsMVaKZ51uG7wyTrcoSMHsMYmVvuCuPnVgNHJfFRKeSQ\"]},\"lib/v2-core/src/interfaces/ISablierV2Base.sol\":{\"keccak256\":\"0x7fa3b890885b19de99e290ccd1d90da3d021be70bd4792c582b7f9e451749792\",\"license\":\"GPL-3.0-or-later\",\"urls\":[\"bzz-raw://5efc3274c9ac532baf96805f127e8b46b7292b12149eca7d830263bbe6ffde95\",\"dweb:/ipfs/QmNZaKcPahmA8juiY42FShVvRn4pktyubP13oyr5p6uCJk\"]},\"lib/v2-core/src/interfaces/ISablierV2Comptroller.sol\":{\"keccak256\":\"0x2133c91a65c1cdfa24b0c5b35317848d167436d49ecef4e22b72934f8ed9f2fa\",\"license\":\"GPL-3.0-or-later\",\"urls\":[\"bzz-raw://f6935d55b1763eeca5e4392542586b2168f100036bcffddd6800cf28aa18052c\",\"dweb:/ipfs/QmRzRxdbcppc1tMv1gQ9NzT5iftEFP8QS57G1RbyAKbyoT\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.21+commit.d9974bed"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "admin",
+              "type": "address",
+              "indexed": true
+            },
+            {
+              "internalType": "contract IERC20",
+              "name": "asset",
+              "type": "address",
+              "indexed": true
+            },
+            {
+              "internalType": "uint128",
+              "name": "protocolRevenues",
+              "type": "uint128",
+              "indexed": false
+            }
+          ],
+          "type": "event",
+          "name": "ClaimProtocolRevenues",
+          "anonymous": false
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "admin",
+              "type": "address",
+              "indexed": true
+            },
+            {
+              "internalType": "contract ISablierV2Comptroller",
+              "name": "oldComptroller",
+              "type": "address",
+              "indexed": false
+            },
+            {
+              "internalType": "contract ISablierV2Comptroller",
+              "name": "newComptroller",
+              "type": "address",
+              "indexed": false
+            }
+          ],
+          "type": "event",
+          "name": "SetComptroller",
+          "anonymous": false
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "oldAdmin",
+              "type": "address",
+              "indexed": true
+            },
+            {
+              "internalType": "address",
+              "name": "newAdmin",
+              "type": "address",
+              "indexed": true
+            }
+          ],
+          "type": "event",
+          "name": "TransferAdmin",
+          "anonymous": false
+        },
+        {
+          "inputs": [],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "MAX_FEE",
+          "outputs": [
+            {
+              "internalType": "UD60x18",
+              "name": "",
+              "type": "uint256"
+            }
+          ]
+        },
+        {
+          "inputs": [],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "admin",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ]
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "contract IERC20",
+              "name": "asset",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "claimProtocolRevenues"
+        },
+        {
+          "inputs": [],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "comptroller",
+          "outputs": [
+            {
+              "internalType": "contract ISablierV2Comptroller",
+              "name": "",
+              "type": "address"
+            }
+          ]
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "contract IERC20",
+              "name": "asset",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "protocolRevenues",
+          "outputs": [
+            {
+              "internalType": "uint128",
+              "name": "revenues",
+              "type": "uint128"
+            }
+          ]
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "contract ISablierV2Comptroller",
+              "name": "newComptroller",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "setComptroller"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "newAdmin",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "transferAdmin"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {
+          "MAX_FEE()": {
+            "details": "This value is hard coded as a constant."
+          },
+          "claimProtocolRevenues(address)": {
+            "details": "Emits a {ClaimProtocolRevenues} event. Requirements: - `msg.sender` must be the contract admin.",
+            "params": {
+              "asset": "The contract address of the ERC-20 asset for which to claim protocol revenues."
+            }
+          },
+          "protocolRevenues(address)": {
+            "params": {
+              "asset": "The contract address of the ERC-20 asset to query."
+            }
+          },
+          "setComptroller(address)": {
+            "details": "Emits a {SetComptroller} event. Notes: - Does not revert if the comptroller is the same. Requirements: - `msg.sender` must be the contract admin.",
+            "params": {
+              "newComptroller": "The address of the new comptroller contract."
+            }
+          },
+          "transferAdmin(address)": {
+            "details": "Notes: - Does not revert if the admin is the same. - This function can potentially leave the contract without an admin, thereby removing any functionality that is only available to the admin. Requirements: - `msg.sender` must be the contract admin.",
+            "params": {
+              "newAdmin": "The address of the new admin."
+            }
+          }
+        },
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {
+          "MAX_FEE()": {
+            "notice": "Retrieves the maximum fee that can be charged by the protocol or a broker, denoted as a fixed-point number where 1e18 is 100%."
+          },
+          "admin()": {
+            "notice": "The address of the admin account or contract."
+          },
+          "claimProtocolRevenues(address)": {
+            "notice": "Claims all accumulated protocol revenues for the provided ERC-20 asset."
+          },
+          "comptroller()": {
+            "notice": "Retrieves the address of the comptroller contract, responsible for the Sablier V2 protocol configuration."
+          },
+          "protocolRevenues(address)": {
+            "notice": "Retrieves the protocol revenues accrued for the provided ERC-20 asset, in units of the asset's decimals."
+          },
+          "setComptroller(address)": {
+            "notice": "Assigns a new comptroller contract responsible for the protocol configuration."
+          },
+          "transferAdmin(address)": {
+            "notice": "Transfers the contract admin to a new address."
+          }
+        },
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        "@openzeppelin/contracts/=lib/v2-core/lib/openzeppelin-contracts/contracts/",
+        "@prb/math/=lib/v2-core/lib/prb-math/",
+        "@prb/test/=lib/v2-core/lib/prb-test/src/",
+        "ds-test/=lib/forge-std/lib/ds-test/src/",
+        "erc4626-tests/=lib/openzeppelin-contracts-upgradeable/lib/erc4626-tests/",
+        "forge-deploy-proxy/=lib/forge-deploy/examples/basic/lib/forge-deploy-proxy/src/",
+        "forge-deploy/=lib/forge-deploy/contracts/",
+        "forge-std/=lib/forge-std/src/",
+        "openzeppelin-contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/",
+        "openzeppelin-contracts/=lib/openzeppelin-contracts/",
+        "openzeppelin/=lib/openzeppelin-contracts-upgradeable/contracts/",
+        "prb-math/=lib/v2-core/lib/prb-math/src/",
+        "prb-test/=lib/v2-core/lib/prb-test/src/",
+        "solady/=lib/v2-core/lib/solady/",
+        "solarray/=lib/v2-core/lib/solarray/src/",
+        "uniswap-v2-core/=lib/uniswap-v2-core/contracts/",
+        "uniswap-v2-periphery/=lib/uniswap-v2-periphery/contracts/",
+        "v2-core/=lib/v2-core/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "lib/v2-core/src/interfaces/ISablierV2Base.sol": "ISablierV2Base"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "lib/v2-core/lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol": {
+        "keccak256": "0xa426add89e9b4785ddeeb07b4d9352b57de8b4cb314c8cb8f0d5898938bd8de9",
+        "urls": [
+          "bzz-raw://09852a830ad29d33cfdf74e7035853c68e43e1a8c242b25db9d656a074a54e6d",
+          "dweb:/ipfs/QmeRSfQwWr3vyP2uJxnjybtPYLMiD17E51d4eMhXQh93R1"
+        ],
+        "license": "MIT"
+      },
+      "lib/v2-core/lib/prb-math/src/Common.sol": {
+        "keccak256": "0x8c348a8711a5036ca64904ff546fb0c27a11143e3a1c1217ea22e1cebd08b126",
+        "urls": [
+          "bzz-raw://db9000ccca882c9a4d78cb18b80e10ab6c19a9765cd57638c462b7e526c54a80",
+          "dweb:/ipfs/QmYkM5pmgMrjau6YMNrNvrwSBEytc9jT8jGb2YdxhB4woe"
+        ],
+        "license": "MIT"
+      },
+      "lib/v2-core/lib/prb-math/src/UD60x18.sol": {
+        "keccak256": "0xdd6ee8bbbb9f4c288aa1455685e0dfd81c54aaec976f05ddf003d2b8f0c89639",
+        "urls": [
+          "bzz-raw://c574478b6f297ae9236ca342d755f6bb5163a4a2dac7f5f6a09ffb34a55069de",
+          "dweb:/ipfs/QmQNfbjhqSwKLusdkhAukxnAMfavWqbBxpQ2MtiZR6LkSk"
+        ],
+        "license": "MIT"
+      },
+      "lib/v2-core/lib/prb-math/src/sd1x18/Casting.sol": {
+        "keccak256": "0xeb29a206d3c96b2c9b897e4bcec586e2ad6f91825f9e14601d9ee01c24e493ed",
+        "urls": [
+          "bzz-raw://7279879074ecb41f116f07bb437849f3597a65e44e7facb0d8936e333674537f",
+          "dweb:/ipfs/QmTpC8zBrFN7PjPoYBH2RGYWaA6hxaAS9kS9Bwzm7zBogV"
+        ],
+        "license": "MIT"
+      },
+      "lib/v2-core/lib/prb-math/src/sd1x18/Constants.sol": {
+        "keccak256": "0x309c5b7cda602e140f3f8332d2e449b8abec0fa7bf81b67b9c98e1cf28aa8e8b",
+        "urls": [
+          "bzz-raw://209d57cfff646b020ed1af00df92f0b5e0a73fdac56fcc7d0ceb5e4365fefaf2",
+          "dweb:/ipfs/QmdDtHpQK2sBAugSmuf1iBdZRg35Ygv3vradVhdbhikGUM"
+        ],
+        "license": "MIT"
+      },
+      "lib/v2-core/lib/prb-math/src/sd1x18/Errors.sol": {
+        "keccak256": "0x72058e9cd109aa432cd8beccbdca9398389599151dc5dbc2d84eeafa289c792c",
+        "urls": [
+          "bzz-raw://2a85b24b61de3288fdc2ed0bb3acccec390b02b68d15b32c9c8c11aa368f700f",
+          "dweb:/ipfs/Qme7iL75jWiTKKRSZt6p3FMtyY2mnoxcdJygS4ycf2m5Qq"
+        ],
+        "license": "MIT"
+      },
+      "lib/v2-core/lib/prb-math/src/sd1x18/ValueType.sol": {
+        "keccak256": "0xdcde09130ea4ce86fadd88bbdb3e740c69dc86ce5239957694a8343e6ff9644a",
+        "urls": [
+          "bzz-raw://bbf356aa75e0525e9cf22cccc3151d955a9e78f91eb2c88f2744b09f9ef80079",
+          "dweb:/ipfs/QmUMaVrFuidro7TvgGNBdHpFHzSA2DRVsMVAygEdQyL1Ct"
+        ],
+        "license": "MIT"
+      },
+      "lib/v2-core/lib/prb-math/src/sd59x18/Casting.sol": {
+        "keccak256": "0x3a632d2ae4779370b02d4f43a4ec6e3808528c2e09055e803ed87df983cad35e",
+        "urls": [
+          "bzz-raw://832ec36c135ff7ddb0bd93ca462aea4eb4521f1daddf4107a690e0c7b94214ec",
+          "dweb:/ipfs/Qmcj9uXDMVX97wGbu44NDGLdcTCuuVRhPF4vhr3UjjeLrd"
+        ],
+        "license": "MIT"
+      },
+      "lib/v2-core/lib/prb-math/src/sd59x18/Constants.sol": {
+        "keccak256": "0x312e75443376ff6bc05125c16ea1a722a80ed6a6a2a7b020678c38213a70162a",
+        "urls": [
+          "bzz-raw://a438ac6c4856d78541746484c1a5e1398ff6b505862058c89e90febdffc28f72",
+          "dweb:/ipfs/QmYhRQ33bdLWSqbySqKQtu9fzKpQrEXEKzuS1TFwyMtbDg"
+        ],
+        "license": "MIT"
+      },
+      "lib/v2-core/lib/prb-math/src/sd59x18/Errors.sol": {
+        "keccak256": "0x71a19d407221fcea92fcac522d36010ba42c3ce2ed7d4a1eec283bd5ac0cf9e2",
+        "urls": [
+          "bzz-raw://996ad3941b48e86433352d2ad8b19eafd3ff2454983bd8ffea28d37d6c4447cc",
+          "dweb:/ipfs/QmV2VSpQimdngfY5fx8SVARDecJdN19TPjbFckUAAoGcKM"
+        ],
+        "license": "MIT"
+      },
+      "lib/v2-core/lib/prb-math/src/sd59x18/Helpers.sol": {
+        "keccak256": "0xc8b24ba940189a13418aae6c1483a7b9acde1d35a99ee0134f6d58ec05c524c8",
+        "urls": [
+          "bzz-raw://d71dc8cbded4150cc3db9612123892e4ee79e6a37d106c40f406054ba4035792",
+          "dweb:/ipfs/QmeyY1XasbY2iE997mjDyzUKYCfdsppnRQV3FvvYF5uhiw"
+        ],
+        "license": "MIT"
+      },
+      "lib/v2-core/lib/prb-math/src/sd59x18/Math.sol": {
+        "keccak256": "0x561694ead1deae45027c5851c24eab53dc9f8a7eb8c623fdf5eebe56dd9da20a",
+        "urls": [
+          "bzz-raw://1dc6789db7d57ce54bc82c5aa74623dc12c3e0cafbaf921940788d0f502a66c5",
+          "dweb:/ipfs/QmeiDrGFSCGNk99ggThYVE4pEaEAgb4LmxgZZKq4GWS2Sv"
+        ],
+        "license": "MIT"
+      },
+      "lib/v2-core/lib/prb-math/src/sd59x18/ValueType.sol": {
+        "keccak256": "0xaf4cc89130b6ce22ae7e1d1bd8d912019278d7d9b35e37bb211aa78cc1b7ff32",
+        "urls": [
+          "bzz-raw://1c535c057358dda38d58c596272ad505811563bcfad51545ae82f0e9d0e39cb9",
+          "dweb:/ipfs/QmVDTjMFxzZqtmLEQm55KaPy6hytAqG7Ve2tYzvYCvswcv"
+        ],
+        "license": "MIT"
+      },
+      "lib/v2-core/lib/prb-math/src/ud2x18/Casting.sol": {
+        "keccak256": "0x395a47779cf0a9358b9998a5ebfc48a0dc07062e4f6a5d3ac536f7870e43691e",
+        "urls": [
+          "bzz-raw://f626199e5bc02936ac2520ff4d2f26ff318536e83e47b9880f558b85114282d3",
+          "dweb:/ipfs/QmaqVnsvezFpoYoYDhFoskKFvUL37DW6Hwry5ktvkX5KvJ"
+        ],
+        "license": "MIT"
+      },
+      "lib/v2-core/lib/prb-math/src/ud2x18/Constants.sol": {
+        "keccak256": "0xe7cad7b8cb3daa6d124e5b4b9aff8148bb4b573f5ead0b8ffe16f8548c1a8587",
+        "urls": [
+          "bzz-raw://b8c477fb4a12612276c5746052897fce01cf6ad0f31cc8e6b19b7e125ef41bb5",
+          "dweb:/ipfs/QmWENWZ15cTVByU2ixuHbNdk5EjCaawkstTbn7vNnRzZtU"
+        ],
+        "license": "MIT"
+      },
+      "lib/v2-core/lib/prb-math/src/ud2x18/Errors.sol": {
+        "keccak256": "0x28e16c14bae589f4d257726a7b6d89ec03112712beaf0f91b33c0a188519fe87",
+        "urls": [
+          "bzz-raw://e80ca782d9ea4e5f1ba02981ec5bba4df740912b192e1a2b119e6fa920c45aea",
+          "dweb:/ipfs/QmYhdVYTh67Mbh77aQMHt1UTbJKuuhHeT4nhCbKCAM3HEr"
+        ],
+        "license": "MIT"
+      },
+      "lib/v2-core/lib/prb-math/src/ud2x18/ValueType.sol": {
+        "keccak256": "0xc8590c817624727ad369239cdf304b71015041714d6bf2f88569797742be628c",
+        "urls": [
+          "bzz-raw://6e9d4071f4c97d4582e6cc0290254e798593185bc0b0c4d399758677e5253921",
+          "dweb:/ipfs/QmUjpqj1Y9wnmgVhtPQXTJ7eW1wwhfaWJbHRCrxZ2niQ3T"
+        ],
+        "license": "MIT"
+      },
+      "lib/v2-core/lib/prb-math/src/ud60x18/Casting.sol": {
+        "keccak256": "0xbdce3b69f27fb198ea084b5df90a83075a61e9fee7021da2e556fa7c8a7574cd",
+        "urls": [
+          "bzz-raw://0b09c907651b797384f53009e70a11fd6c7a795a85158e872598f13c337500b2",
+          "dweb:/ipfs/QmUKCfKrcsbsR1QqhDpsC7NanQhPyuoVa3KS78Lqy83Lfi"
+        ],
+        "license": "MIT"
+      },
+      "lib/v2-core/lib/prb-math/src/ud60x18/Constants.sol": {
+        "keccak256": "0x3d2219fe39162d051d993702598c15a2735784fff0c0d2dadea1b02a51cb20f0",
+        "urls": [
+          "bzz-raw://176f0175397a2965f2b1380c9f97cdcffdafaa7f2d3585c5db26d61b4902299e",
+          "dweb:/ipfs/QmbuGa84ah972Qa2JBFHbE4aLoN6cx1J8hDLztzStGrRMf"
+        ],
+        "license": "MIT"
+      },
+      "lib/v2-core/lib/prb-math/src/ud60x18/Conversions.sol": {
+        "keccak256": "0xa949472633cc36fa8d2714e167ff71b51198358bf3f6117d038350e14f30cec8",
+        "urls": [
+          "bzz-raw://3f2d3b3631b3b43cd43f3ef41c2912582eb7bd56c83dfab417adf1a7afa81fd4",
+          "dweb:/ipfs/QmfDFXkXLYp1skMZ6CBnYkL3aJKdVPfC9SnfcSSwbkJ2Wm"
+        ],
+        "license": "MIT"
+      },
+      "lib/v2-core/lib/prb-math/src/ud60x18/Errors.sol": {
+        "keccak256": "0x3a25f4e18a8a69fa9ac84f826bbfa4b6535788ae9a26623cc848e169e5d842ad",
+        "urls": [
+          "bzz-raw://8b34b02e146128930fa73b3a2de2f22c27dbf180012096d2602256263fdda18a",
+          "dweb:/ipfs/QmQ46FQ2arioGSwAePLiLDGv6CBtkrqdJAifV7MFPqfPPu"
+        ],
+        "license": "MIT"
+      },
+      "lib/v2-core/lib/prb-math/src/ud60x18/Helpers.sol": {
+        "keccak256": "0x24c9c09d2dd73770c516a4f08296aa9e83b6431b52d97990a726c41c8aa2746f",
+        "urls": [
+          "bzz-raw://e5ec749ccb50bd3420346951875c2a0bb6469e90190c82630de6b2117a8fad29",
+          "dweb:/ipfs/QmT4dgxVtbwMbSLyFRXeyYzfda7AvMyRUVZzd6yUS8qr7C"
+        ],
+        "license": "MIT"
+      },
+      "lib/v2-core/lib/prb-math/src/ud60x18/Math.sol": {
+        "keccak256": "0xb9c4ab4753274baf1cc88b90da04b1308445c074eb94d7ab229109d78602497b",
+        "urls": [
+          "bzz-raw://e80843aeb21429a0c12dfd22f2f1d69478de32b8cb17b312e86fa2b0cfe50f7e",
+          "dweb:/ipfs/QmdY293FrZb9KeaHTfq7wMXpQWinqFHhiLaSyQLKNcWs8w"
+        ],
+        "license": "MIT"
+      },
+      "lib/v2-core/lib/prb-math/src/ud60x18/ValueType.sol": {
+        "keccak256": "0x3a2ada6e87a1c61d3a58e7ff9d5ea9eee00a4cca8b350a9d461e3bb2867693f2",
+        "urls": [
+          "bzz-raw://021a34174b566e8575ce7f9d8f93f3e96c8fa748192bc5f9b4bdc049ce6675cc",
+          "dweb:/ipfs/QmXa6CXbEnf7K64phvDePsjznomBWZMkCg5nGn81KuwFf2"
+        ],
+        "license": "MIT"
+      },
+      "lib/v2-core/src/interfaces/IAdminable.sol": {
+        "keccak256": "0x289bd3a74cb971dd3928c44d194d9b75939d75494901df32512b5ccbc0ed8cb0",
+        "urls": [
+          "bzz-raw://634a0098bc40a927bbefe46f6f2d8a5d94f9f92c5bad0149e4c7da67b0731bc7",
+          "dweb:/ipfs/QmVsMVaKZ51uG7wyTrcoSMHsMYmVvuCuPnVgNHJfFRKeSQ"
+        ],
+        "license": "GPL-3.0-or-later"
+      },
+      "lib/v2-core/src/interfaces/ISablierV2Base.sol": {
+        "keccak256": "0x7fa3b890885b19de99e290ccd1d90da3d021be70bd4792c582b7f9e451749792",
+        "urls": [
+          "bzz-raw://5efc3274c9ac532baf96805f127e8b46b7292b12149eca7d830263bbe6ffde95",
+          "dweb:/ipfs/QmNZaKcPahmA8juiY42FShVvRn4pktyubP13oyr5p6uCJk"
+        ],
+        "license": "GPL-3.0-or-later"
+      },
+      "lib/v2-core/src/interfaces/ISablierV2Comptroller.sol": {
+        "keccak256": "0x2133c91a65c1cdfa24b0c5b35317848d167436d49ecef4e22b72934f8ed9f2fa",
+        "urls": [
+          "bzz-raw://f6935d55b1763eeca5e4392542586b2168f100036bcffddd6800cf28aa18052c",
+          "dweb:/ipfs/QmRzRxdbcppc1tMv1gQ9NzT5iftEFP8QS57G1RbyAKbyoT"
+        ],
+        "license": "GPL-3.0-or-later"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "lib/v2-core/src/interfaces/ISablierV2Base.sol",
+    "id": 60878,
+    "exportedSymbols": {
+      "IAdminable": [
+        60805
+      ],
+      "IERC20": [
+        53679
+      ],
+      "ISablierV2Base": [
+        60877
+      ],
+      "ISablierV2Comptroller": [
+        60974
+      ],
+      "UD60x18": [
+        60714
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "46:3646:103",
+    "nodes": [
+      {
+        "id": 60807,
+        "nodeType": "PragmaDirective",
+        "src": "46:25:103",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          ">=",
+          "0.8",
+          ".19"
+        ]
+      },
+      {
+        "id": 60809,
+        "nodeType": "ImportDirective",
+        "src": "75:72:103",
+        "nodes": [],
+        "absolutePath": "lib/v2-core/lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
+        "file": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 60878,
+        "sourceUnit": 53680,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 60808,
+              "name": "IERC20",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 53679,
+              "src": "84:6:103",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "id": 60811,
+        "nodeType": "ImportDirective",
+        "src": "149:52:103",
+        "nodes": [],
+        "absolutePath": "lib/v2-core/lib/prb-math/src/UD60x18.sol",
+        "file": "@prb/math/src/UD60x18.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 60878,
+        "sourceUnit": 55587,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 60810,
+              "name": "UD60x18",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 60714,
+              "src": "158:7:103",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "id": 60813,
+        "nodeType": "ImportDirective",
+        "src": "205:46:103",
+        "nodes": [],
+        "absolutePath": "lib/v2-core/src/interfaces/IAdminable.sol",
+        "file": "./IAdminable.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 60878,
+        "sourceUnit": 60806,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 60812,
+              "name": "IAdminable",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 60805,
+              "src": "214:10:103",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "id": 60815,
+        "nodeType": "ImportDirective",
+        "src": "253:68:103",
+        "nodes": [],
+        "absolutePath": "lib/v2-core/src/interfaces/ISablierV2Comptroller.sol",
+        "file": "./ISablierV2Comptroller.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 60878,
+        "sourceUnit": 60975,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 60814,
+              "name": "ISablierV2Comptroller",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 60974,
+              "src": "262:21:103",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "id": 60877,
+        "nodeType": "ContractDefinition",
+        "src": "416:3274:103",
+        "nodes": [
+          {
+            "id": 60828,
+            "nodeType": "EventDefinition",
+            "src": "1064:99:103",
+            "nodes": [],
+            "anonymous": false,
+            "documentation": {
+              "id": 60819,
+              "nodeType": "StructuredDocumentation",
+              "src": "675:383:103",
+              "text": "@notice Emitted when the admin claims all protocol revenues accrued for a particular ERC-20 asset.\n @param admin The address of the contract admin.\n @param asset The contract address of the ERC-20 asset the protocol revenues have been claimed for.\n @param protocolRevenues The amount of protocol revenues claimed, denoted in units of the asset's decimals."
+            },
+            "eventSelector": "ca7a4a65a94ed2f37538814e00e1cd4c41a78261561e3f3794592f11409cf5af",
+            "name": "ClaimProtocolRevenues",
+            "nameLocation": "1070:21:103",
+            "parameters": {
+              "id": 60827,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 60821,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "admin",
+                  "nameLocation": "1108:5:103",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 60828,
+                  "src": "1092:21:103",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 60820,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1092:7:103",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 60824,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nameLocation": "1130:5:103",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 60828,
+                  "src": "1115:20:103",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IERC20_$53679",
+                    "typeString": "contract IERC20"
+                  },
+                  "typeName": {
+                    "id": 60823,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 60822,
+                      "name": "IERC20",
+                      "nameLocations": [
+                        "1115:6:103"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 53679,
+                      "src": "1115:6:103"
+                    },
+                    "referencedDeclaration": 53679,
+                    "src": "1115:6:103",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IERC20_$53679",
+                      "typeString": "contract IERC20"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 60826,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "protocolRevenues",
+                  "nameLocation": "1145:16:103",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 60828,
+                  "src": "1137:24:103",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint128",
+                    "typeString": "uint128"
+                  },
+                  "typeName": {
+                    "id": 60825,
+                    "name": "uint128",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1137:7:103",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint128",
+                      "typeString": "uint128"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1091:71:103"
+            }
+          },
+          {
+            "id": 60839,
+            "nodeType": "EventDefinition",
+            "src": "1453:136:103",
+            "nodes": [],
+            "anonymous": false,
+            "documentation": {
+              "id": 60829,
+              "nodeType": "StructuredDocumentation",
+              "src": "1171:276:103",
+              "text": "@notice Emitted when the admin sets a new comptroller contract.\n @param admin The address of the contract admin.\n @param oldComptroller The address of the old comptroller contract.\n @param newComptroller The address of the new comptroller contract."
+            },
+            "eventSelector": "dcb09aef4bf01068924ccce937981cbe59d25ba08380cf941aaaea4e4bd3960d",
+            "name": "SetComptroller",
+            "nameLocation": "1459:14:103",
+            "parameters": {
+              "id": 60838,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 60831,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "admin",
+                  "nameLocation": "1500:5:103",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 60839,
+                  "src": "1484:21:103",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 60830,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1484:7:103",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 60834,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "oldComptroller",
+                  "nameLocation": "1529:14:103",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 60839,
+                  "src": "1507:36:103",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ISablierV2Comptroller_$60974",
+                    "typeString": "contract ISablierV2Comptroller"
+                  },
+                  "typeName": {
+                    "id": 60833,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 60832,
+                      "name": "ISablierV2Comptroller",
+                      "nameLocations": [
+                        "1507:21:103"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 60974,
+                      "src": "1507:21:103"
+                    },
+                    "referencedDeclaration": 60974,
+                    "src": "1507:21:103",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ISablierV2Comptroller_$60974",
+                      "typeString": "contract ISablierV2Comptroller"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 60837,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "newComptroller",
+                  "nameLocation": "1567:14:103",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 60839,
+                  "src": "1545:36:103",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ISablierV2Comptroller_$60974",
+                    "typeString": "contract ISablierV2Comptroller"
+                  },
+                  "typeName": {
+                    "id": 60836,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 60835,
+                      "name": "ISablierV2Comptroller",
+                      "nameLocations": [
+                        "1545:21:103"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 60974,
+                      "src": "1545:21:103"
+                    },
+                    "referencedDeclaration": 60974,
+                    "src": "1545:21:103",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ISablierV2Comptroller_$60974",
+                      "typeString": "contract ISablierV2Comptroller"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1473:115:103"
+            }
+          },
+          {
+            "id": 60846,
+            "nodeType": "FunctionDefinition",
+            "src": "2023:51:103",
+            "nodes": [],
+            "documentation": {
+              "id": 60840,
+              "nodeType": "StructuredDocumentation",
+              "src": "1816:201:103",
+              "text": "@notice Retrieves the maximum fee that can be charged by the protocol or a broker, denoted as a fixed-point\n number where 1e18 is 100%.\n @dev This value is hard coded as a constant."
+            },
+            "functionSelector": "bc063e1a",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "MAX_FEE",
+            "nameLocation": "2032:7:103",
+            "parameters": {
+              "id": 60841,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2039:2:103"
+            },
+            "returnParameters": {
+              "id": 60845,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 60844,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 60846,
+                  "src": "2065:7:103",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_UD60x18_$60714",
+                    "typeString": "UD60x18"
+                  },
+                  "typeName": {
+                    "id": 60843,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 60842,
+                      "name": "UD60x18",
+                      "nameLocations": [
+                        "2065:7:103"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 60714,
+                      "src": "2065:7:103"
+                    },
+                    "referencedDeclaration": 60714,
+                    "src": "2065:7:103",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_UD60x18_$60714",
+                      "typeString": "UD60x18"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2064:9:103"
+            },
+            "scope": 60877,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 60853,
+            "nodeType": "FunctionDefinition",
+            "src": "2214:69:103",
+            "nodes": [],
+            "documentation": {
+              "id": 60847,
+              "nodeType": "StructuredDocumentation",
+              "src": "2082:126:103",
+              "text": "@notice Retrieves the address of the comptroller contract, responsible for the Sablier V2 protocol\n configuration."
+            },
+            "functionSelector": "5fe3b567",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "comptroller",
+            "nameLocation": "2223:11:103",
+            "parameters": {
+              "id": 60848,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2234:2:103"
+            },
+            "returnParameters": {
+              "id": 60852,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 60851,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 60853,
+                  "src": "2260:21:103",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ISablierV2Comptroller_$60974",
+                    "typeString": "contract ISablierV2Comptroller"
+                  },
+                  "typeName": {
+                    "id": 60850,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 60849,
+                      "name": "ISablierV2Comptroller",
+                      "nameLocations": [
+                        "2260:21:103"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 60974,
+                      "src": "2260:21:103"
+                    },
+                    "referencedDeclaration": 60974,
+                    "src": "2260:21:103",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ISablierV2Comptroller_$60974",
+                      "typeString": "contract ISablierV2Comptroller"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2259:23:103"
+            },
+            "scope": 60877,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 60862,
+            "nodeType": "FunctionDefinition",
+            "src": "2495:81:103",
+            "nodes": [],
+            "documentation": {
+              "id": 60854,
+              "nodeType": "StructuredDocumentation",
+              "src": "2291:198:103",
+              "text": "@notice Retrieves the protocol revenues accrued for the provided ERC-20 asset, in units of the asset's\n decimals.\n @param asset The contract address of the ERC-20 asset to query."
+            },
+            "functionSelector": "39a73c03",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "protocolRevenues",
+            "nameLocation": "2504:16:103",
+            "parameters": {
+              "id": 60858,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 60857,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nameLocation": "2528:5:103",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 60862,
+                  "src": "2521:12:103",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IERC20_$53679",
+                    "typeString": "contract IERC20"
+                  },
+                  "typeName": {
+                    "id": 60856,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 60855,
+                      "name": "IERC20",
+                      "nameLocations": [
+                        "2521:6:103"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 53679,
+                      "src": "2521:6:103"
+                    },
+                    "referencedDeclaration": 53679,
+                    "src": "2521:6:103",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IERC20_$53679",
+                      "typeString": "contract IERC20"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2520:14:103"
+            },
+            "returnParameters": {
+              "id": 60861,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 60860,
+                  "mutability": "mutable",
+                  "name": "revenues",
+                  "nameLocation": "2566:8:103",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 60862,
+                  "src": "2558:16:103",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint128",
+                    "typeString": "uint128"
+                  },
+                  "typeName": {
+                    "id": 60859,
+                    "name": "uint128",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2558:7:103",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint128",
+                      "typeString": "uint128"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2557:18:103"
+            },
+            "scope": 60877,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 60869,
+            "nodeType": "FunctionDefinition",
+            "src": "3150:54:103",
+            "nodes": [],
+            "documentation": {
+              "id": 60863,
+              "nodeType": "StructuredDocumentation",
+              "src": "2805:339:103",
+              "text": "@notice Claims all accumulated protocol revenues for the provided ERC-20 asset.\n @dev Emits a {ClaimProtocolRevenues} event.\n Requirements:\n - `msg.sender` must be the contract admin.\n @param asset The contract address of the ERC-20 asset for which to claim protocol revenues."
+            },
+            "functionSelector": "a6202bf2",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "claimProtocolRevenues",
+            "nameLocation": "3159:21:103",
+            "parameters": {
+              "id": 60867,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 60866,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nameLocation": "3188:5:103",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 60869,
+                  "src": "3181:12:103",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IERC20_$53679",
+                    "typeString": "contract IERC20"
+                  },
+                  "typeName": {
+                    "id": 60865,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 60864,
+                      "name": "IERC20",
+                      "nameLocations": [
+                        "3181:6:103"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 53679,
+                      "src": "3181:6:103"
+                    },
+                    "referencedDeclaration": 53679,
+                    "src": "3181:6:103",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IERC20_$53679",
+                      "typeString": "contract IERC20"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3180:14:103"
+            },
+            "returnParameters": {
+              "id": 60868,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3203:0:103"
+            },
+            "scope": 60877,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 60876,
+            "nodeType": "FunctionDefinition",
+            "src": "3616:71:103",
+            "nodes": [],
+            "documentation": {
+              "id": 60870,
+              "nodeType": "StructuredDocumentation",
+              "src": "3212:398:103",
+              "text": "@notice Assigns a new comptroller contract responsible for the protocol configuration.\n @dev Emits a {SetComptroller} event.\n Notes:\n - Does not revert if the comptroller is the same.\n Requirements:\n - `msg.sender` must be the contract admin.\n @param newComptroller The address of the new comptroller contract."
+            },
+            "functionSelector": "8bad38dd",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setComptroller",
+            "nameLocation": "3625:14:103",
+            "parameters": {
+              "id": 60874,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 60873,
+                  "mutability": "mutable",
+                  "name": "newComptroller",
+                  "nameLocation": "3662:14:103",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 60876,
+                  "src": "3640:36:103",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ISablierV2Comptroller_$60974",
+                    "typeString": "contract ISablierV2Comptroller"
+                  },
+                  "typeName": {
+                    "id": 60872,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 60871,
+                      "name": "ISablierV2Comptroller",
+                      "nameLocations": [
+                        "3640:21:103"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 60974,
+                      "src": "3640:21:103"
+                    },
+                    "referencedDeclaration": 60974,
+                    "src": "3640:21:103",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ISablierV2Comptroller_$60974",
+                      "typeString": "contract ISablierV2Comptroller"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3639:38:103"
+            },
+            "returnParameters": {
+              "id": 60875,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3686:0:103"
+            },
+            "scope": 60877,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 60817,
+              "name": "IAdminable",
+              "nameLocations": [
+                "444:10:103"
+              ],
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 60805,
+              "src": "444:10:103"
+            },
+            "id": 60818,
+            "nodeType": "InheritanceSpecifier",
+            "src": "444:10:103"
+          }
+        ],
+        "canonicalName": "ISablierV2Base",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 60816,
+          "nodeType": "StructuredDocumentation",
+          "src": "325:91:103",
+          "text": "@title ISablierV2Base\n @notice Base logic for all Sablier V2 streaming contracts."
+        },
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          60877,
+          60805
+        ],
+        "name": "ISablierV2Base",
+        "nameLocation": "426:14:103",
+        "scope": 60878,
+        "usedErrors": [],
+        "usedEvents": [
+          60792,
+          60828,
+          60839
+        ]
+      }
+    ],
+    "license": "GPL-3.0-or-later"
+  },
+  "id": 103
+}

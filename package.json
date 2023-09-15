@@ -16,7 +16,7 @@
     "deploy:1": "forge create src/PINTDeployer.sol:PINTDeployer --rpc-url http://127.0.0.1:8545 --mnemonic \"assume fitness moment future coin dutch wait join delay faint response skin\"",
     "deploy:2": "forge create src/PINTDeployer2.sol:PINTDeployer2 --rpc-url http://127.0.0.1:8545 --mnemonic \"assume fitness moment future coin dutch wait join delay faint response skin\"",
     "deploy": "npm-run-all deploy:opps deploy:1 deploy:2",
-    "postinstall": "npm gen-types"
+    "postinstall": "npm run gen-types"
   },
   "license": "MIT",
   "private": false,

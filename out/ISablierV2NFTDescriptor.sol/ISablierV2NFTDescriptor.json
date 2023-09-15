@@ -1,0 +1,379 @@
+{
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "contract IERC721Metadata",
+          "name": "sablier",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "streamId",
+          "type": "uint256"
+        }
+      ],
+      "name": "tokenURI",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "uri",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "tokenURI(address,uint256)": "e9dc6375"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.21+commit.d9974bed\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract IERC721Metadata\",\"name\":\"sablier\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"streamId\",\"type\":\"uint256\"}],\"name\":\"tokenURI\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"uri\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Inspired by Uniswap V3 Positions NFTs.\",\"kind\":\"dev\",\"methods\":{\"tokenURI(address,uint256)\":{\"details\":\"This is a data URI with the JSON contents directly inlined.\",\"params\":{\"sablier\":\"The address of the Sablier contract the stream was created in.\",\"streamId\":\"The id of the stream for which to produce a description.\"},\"returns\":{\"uri\":\"The URI of the ERC721-compliant metadata.\"}}},\"title\":\"ISablierV2NFTDescriptor\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"tokenURI(address,uint256)\":{\"notice\":\"Produces the URI describing a particular stream NFT.\"}},\"notice\":\"This contract generates the URI describing the Sablier V2 stream NFTs.\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"lib/v2-core/src/interfaces/ISablierV2NFTDescriptor.sol\":\"ISablierV2NFTDescriptor\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@openzeppelin/contracts/=lib/v2-core/lib/openzeppelin-contracts/contracts/\",\":@prb/math/=lib/v2-core/lib/prb-math/\",\":@prb/test/=lib/v2-core/lib/prb-test/src/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":erc4626-tests/=lib/openzeppelin-contracts-upgradeable/lib/erc4626-tests/\",\":forge-deploy-proxy/=lib/forge-deploy/examples/basic/lib/forge-deploy-proxy/src/\",\":forge-deploy/=lib/forge-deploy/contracts/\",\":forge-std/=lib/forge-std/src/\",\":openzeppelin-contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/\",\":openzeppelin/=lib/openzeppelin-contracts-upgradeable/contracts/\",\":prb-math/=lib/v2-core/lib/prb-math/src/\",\":prb-test/=lib/v2-core/lib/prb-test/src/\",\":solady/=lib/v2-core/lib/solady/\",\":solarray/=lib/v2-core/lib/solarray/src/\",\":uniswap-v2-core/=lib/uniswap-v2-core/contracts/\",\":uniswap-v2-periphery/=lib/uniswap-v2-periphery/contracts/\",\":v2-core/=lib/v2-core/\"]},\"sources\":{\"lib/v2-core/lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol\":{\"keccak256\":\"0x8d4cb0754ee7faf208c69cff231bb75ca4676db78c32e6fd4a06b71b739b3571\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d66d89d40895a0f68bb82ef5ba6605924e9a37ba4e79e21df2e63afc30916aa7\",\"dweb:/ipfs/QmWAsZysULG6BMRwQjjCeqV1TimAAWGiFC2aAGt3eb6gh6\"]},\"lib/v2-core/lib/openzeppelin-contracts/contracts/token/ERC721/extensions/IERC721Metadata.sol\":{\"keccak256\":\"0x23018238ee951d13a9d7f7d2cd641065752923c0aeede09a58a7f1fabf891d75\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://83a5286e82596aa938b6e38803360ca935b9727dc98f317b318a559ae9f438a5\",\"dweb:/ipfs/QmaBhNbpWZ6JPrfhuqX54DAtZj35yX278vArsNr5WtdXoZ\"]},\"lib/v2-core/lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol\":{\"keccak256\":\"0x540685d7ece3faa56f38253270ff11b18e63949fb8659c408123b1874674492e\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5474839e19e2571c52eae3aab1dc6e6edf2b20bbba9895f59db6594a2678a3d5\",\"dweb:/ipfs/QmVHocBeANMkq4TzVM7q9At5NSg1TEpT9D9vgJ5dGcvcPN\"]},\"lib/v2-core/src/interfaces/ISablierV2NFTDescriptor.sol\":{\"keccak256\":\"0xe7840e59d0ce011e0be119098e82a3b4deb6ca779c816855ebed6a29349fc970\",\"license\":\"GPL-3.0-or-later\",\"urls\":[\"bzz-raw://733f9f5f21b72b76a121677b5f2dcd113e301408d969b5364d082c7c9dc8fec7\",\"dweb:/ipfs/QmdtUp1Ss4dHBnosNkjT9tCuxJ26UTP5dBxrVEJRZhe76E\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.21+commit.d9974bed"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "contract IERC721Metadata",
+              "name": "sablier",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "streamId",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "tokenURI",
+          "outputs": [
+            {
+              "internalType": "string",
+              "name": "uri",
+              "type": "string"
+            }
+          ]
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {
+          "tokenURI(address,uint256)": {
+            "details": "This is a data URI with the JSON contents directly inlined.",
+            "params": {
+              "sablier": "The address of the Sablier contract the stream was created in.",
+              "streamId": "The id of the stream for which to produce a description."
+            },
+            "returns": {
+              "uri": "The URI of the ERC721-compliant metadata."
+            }
+          }
+        },
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {
+          "tokenURI(address,uint256)": {
+            "notice": "Produces the URI describing a particular stream NFT."
+          }
+        },
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        "@openzeppelin/contracts/=lib/v2-core/lib/openzeppelin-contracts/contracts/",
+        "@prb/math/=lib/v2-core/lib/prb-math/",
+        "@prb/test/=lib/v2-core/lib/prb-test/src/",
+        "ds-test/=lib/forge-std/lib/ds-test/src/",
+        "erc4626-tests/=lib/openzeppelin-contracts-upgradeable/lib/erc4626-tests/",
+        "forge-deploy-proxy/=lib/forge-deploy/examples/basic/lib/forge-deploy-proxy/src/",
+        "forge-deploy/=lib/forge-deploy/contracts/",
+        "forge-std/=lib/forge-std/src/",
+        "openzeppelin-contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/",
+        "openzeppelin-contracts/=lib/openzeppelin-contracts/",
+        "openzeppelin/=lib/openzeppelin-contracts-upgradeable/contracts/",
+        "prb-math/=lib/v2-core/lib/prb-math/src/",
+        "prb-test/=lib/v2-core/lib/prb-test/src/",
+        "solady/=lib/v2-core/lib/solady/",
+        "solarray/=lib/v2-core/lib/solarray/src/",
+        "uniswap-v2-core/=lib/uniswap-v2-core/contracts/",
+        "uniswap-v2-periphery/=lib/uniswap-v2-periphery/contracts/",
+        "v2-core/=lib/v2-core/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "lib/v2-core/src/interfaces/ISablierV2NFTDescriptor.sol": "ISablierV2NFTDescriptor"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "lib/v2-core/lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol": {
+        "keccak256": "0x8d4cb0754ee7faf208c69cff231bb75ca4676db78c32e6fd4a06b71b739b3571",
+        "urls": [
+          "bzz-raw://d66d89d40895a0f68bb82ef5ba6605924e9a37ba4e79e21df2e63afc30916aa7",
+          "dweb:/ipfs/QmWAsZysULG6BMRwQjjCeqV1TimAAWGiFC2aAGt3eb6gh6"
+        ],
+        "license": "MIT"
+      },
+      "lib/v2-core/lib/openzeppelin-contracts/contracts/token/ERC721/extensions/IERC721Metadata.sol": {
+        "keccak256": "0x23018238ee951d13a9d7f7d2cd641065752923c0aeede09a58a7f1fabf891d75",
+        "urls": [
+          "bzz-raw://83a5286e82596aa938b6e38803360ca935b9727dc98f317b318a559ae9f438a5",
+          "dweb:/ipfs/QmaBhNbpWZ6JPrfhuqX54DAtZj35yX278vArsNr5WtdXoZ"
+        ],
+        "license": "MIT"
+      },
+      "lib/v2-core/lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol": {
+        "keccak256": "0x540685d7ece3faa56f38253270ff11b18e63949fb8659c408123b1874674492e",
+        "urls": [
+          "bzz-raw://5474839e19e2571c52eae3aab1dc6e6edf2b20bbba9895f59db6594a2678a3d5",
+          "dweb:/ipfs/QmVHocBeANMkq4TzVM7q9At5NSg1TEpT9D9vgJ5dGcvcPN"
+        ],
+        "license": "MIT"
+      },
+      "lib/v2-core/src/interfaces/ISablierV2NFTDescriptor.sol": {
+        "keccak256": "0xe7840e59d0ce011e0be119098e82a3b4deb6ca779c816855ebed6a29349fc970",
+        "urls": [
+          "bzz-raw://733f9f5f21b72b76a121677b5f2dcd113e301408d969b5364d082c7c9dc8fec7",
+          "dweb:/ipfs/QmdtUp1Ss4dHBnosNkjT9tCuxJ26UTP5dBxrVEJRZhe76E"
+        ],
+        "license": "GPL-3.0-or-later"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "lib/v2-core/src/interfaces/ISablierV2NFTDescriptor.sol",
+    "id": 61359,
+    "exportedSymbols": {
+      "IERC721Metadata": [
+        53822
+      ],
+      "ISablierV2NFTDescriptor": [
+        61358
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "46:829:107",
+    "nodes": [
+      {
+        "id": 61343,
+        "nodeType": "PragmaDirective",
+        "src": "46:25:107",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          ">=",
+          "0.8",
+          ".19"
+        ]
+      },
+      {
+        "id": 61345,
+        "nodeType": "ImportDirective",
+        "src": "75:102:107",
+        "nodes": [],
+        "absolutePath": "lib/v2-core/lib/openzeppelin-contracts/contracts/token/ERC721/extensions/IERC721Metadata.sol",
+        "file": "@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 61359,
+        "sourceUnit": 53823,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 61344,
+              "name": "IERC721Metadata",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 53822,
+              "src": "84:15:107",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "id": 61358,
+        "nodeType": "ContractDefinition",
+        "src": "350:523:107",
+        "nodes": [
+          {
+            "id": 61357,
+            "nodeType": "FunctionDefinition",
+            "src": "767:103:107",
+            "nodes": [],
+            "documentation": {
+              "id": 61347,
+              "nodeType": "StructuredDocumentation",
+              "src": "391:370:107",
+              "text": "@notice Produces the URI describing a particular stream NFT.\n @dev This is a data URI with the JSON contents directly inlined.\n @param sablier The address of the Sablier contract the stream was created in.\n @param streamId The id of the stream for which to produce a description.\n @return uri The URI of the ERC721-compliant metadata."
+            },
+            "functionSelector": "e9dc6375",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "tokenURI",
+            "nameLocation": "776:8:107",
+            "parameters": {
+              "id": 61353,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 61350,
+                  "mutability": "mutable",
+                  "name": "sablier",
+                  "nameLocation": "801:7:107",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 61357,
+                  "src": "785:23:107",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IERC721Metadata_$53822",
+                    "typeString": "contract IERC721Metadata"
+                  },
+                  "typeName": {
+                    "id": 61349,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 61348,
+                      "name": "IERC721Metadata",
+                      "nameLocations": [
+                        "785:15:107"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 53822,
+                      "src": "785:15:107"
+                    },
+                    "referencedDeclaration": 53822,
+                    "src": "785:15:107",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IERC721Metadata_$53822",
+                      "typeString": "contract IERC721Metadata"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 61352,
+                  "mutability": "mutable",
+                  "name": "streamId",
+                  "nameLocation": "818:8:107",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 61357,
+                  "src": "810:16:107",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 61351,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "810:7:107",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "784:43:107"
+            },
+            "returnParameters": {
+              "id": 61356,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 61355,
+                  "mutability": "mutable",
+                  "name": "uri",
+                  "nameLocation": "865:3:107",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 61357,
+                  "src": "851:17:107",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 61354,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "851:6:107",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "850:19:107"
+            },
+            "scope": 61358,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ISablierV2NFTDescriptor",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 61346,
+          "nodeType": "StructuredDocumentation",
+          "src": "181:169:107",
+          "text": "@title ISablierV2NFTDescriptor\n @notice This contract generates the URI describing the Sablier V2 stream NFTs.\n @dev Inspired by Uniswap V3 Positions NFTs."
+        },
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          61358
+        ],
+        "name": "ISablierV2NFTDescriptor",
+        "nameLocation": "360:23:107",
+        "scope": 61359,
+        "usedErrors": [],
+        "usedEvents": []
+      }
+    ],
+    "license": "GPL-3.0-or-later"
+  },
+  "id": 107
+}
