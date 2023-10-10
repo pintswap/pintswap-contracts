@@ -12,11 +12,17 @@
     "node:ethereum": "anvil -f https://mainnet.infura.io/v3/84842078b09946638c03157f83405213 --auto-impersonate -m \"assume fitness moment future coin dutch wait join delay faint response skin\"",
     "gen-types": "typechain --target=ethers-v6 \"./out/**/*.json\"",
     "build": "forge build && yarn gen-types",
+    "postinstall": "npm run gen-types",
+
     "deploy:opps": "forge create src/OPPS.sol:OPPS --rpc-url http://127.0.0.1:8545 --mnemonic \"assume fitness moment future coin dutch wait join delay faint response skin\"",
     "deploy:1": "forge create src/PINTDeployer.sol:PINTDeployer --rpc-url http://127.0.0.1:8545 --mnemonic \"assume fitness moment future coin dutch wait join delay faint response skin\"",
     "deploy:2": "forge create src/PINTDeployer2.sol:PINTDeployer2 --rpc-url http://127.0.0.1:8545 --mnemonic \"assume fitness moment future coin dutch wait join delay faint response skin\"",
     "deploy": "npm-run-all deploy:opps deploy:1 deploy:2",
-    "postinstall": "npm run gen-types"
+
+    "deploy:opps:sepolia": "forge create src/OPPS.sol:OPPS --rpc-url ${SEPOLIA_RPC_URL} --private-key ${PRIVATE_KEY}",
+    "deploy:1:sepolia": "forge create src/PINTDeployer.sol:PINTDeployer --rpc-url ${SEPOLIA_RPC_URL} --private-key ${PRIVATE_KEY}",
+    "deploy:2:sepolia": "forge create src/PINTDeployer2.sol:PINTDeployer2 --rpc-url ${SEPOLIA_RPC_URL} --private-key ${PRIVATE_KEY}",
+    "deploy:sepolia": "npm-run-all deploy:opps:sepolia deploy:1:sepolia deploy:2:sepolia"
   },
   "license": "MIT",
   "private": false,
