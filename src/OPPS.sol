@@ -18,32 +18,28 @@ contract OPPS is ERC721Permit, Ownable {
     }
 
     string private __baseURI;
+
     modifier onlySIP() {
         require(sipERC20(msg.sender).opps() == address(this), "!opps");
         bytes32 hash;
         assembly {
-          hash := extcodehash(caller())
+            hash := extcodehash(caller())
         }
-        require(
-            hash == sipHash,
-            "!sip"
-        );
+        require(hash == sipHash, "!sip");
         _;
     }
 
     function _deployClone(address asset) internal returns (address clone) {
-        clone = ClonesUpgradeable.cloneDeterministic(
-            sipImplementation,
-            bytes32(uint256(uint160(asset)))
-        );
+        clone = ClonesUpgradeable.cloneDeterministic(sipImplementation, bytes32(uint256(uint160(asset))));
     }
+
     function deployVault(address asset) public returns (address clone) {
         clone = _deployClone(asset);
         sipERC20(clone).initialize(asset);
     }
 
     function vaultFor(address asset) public view returns (address) {
-      return ClonesUpgradeable.predictDeterministicAddress(sipImplementation, bytes32(uint256(uint160(asset))));
+        return ClonesUpgradeable.predictDeterministicAddress(sipImplementation, bytes32(uint256(uint160(asset))));
     }
 
     function registerName(bytes32 nameHash) public onlySIP {
@@ -51,14 +47,12 @@ contract OPPS is ERC721Permit, Ownable {
     }
 
     constructor() ERC721Permit("OPPS", "OPPS", "1") Ownable() {
-        setBaseURI(
-            "ipfs://bafybeiezpbqq6favps74erwn35ircae2xqqdmczxjs7imosdkn6ahmuxme/"
-        );
+        setBaseURI("ipfs://bafybeiezpbqq6favps74erwn35ircae2xqqdmczxjs7imosdkn6ahmuxme/");
         sipImplementation = address(new sipERC20());
         bytes32 _sipHash;
         address clone = _deployClone(address(0x0));
         assembly {
-          _sipHash := extcodehash(clone)
+            _sipHash := extcodehash(clone)
         }
         sipHash = _sipHash;
     }
@@ -67,9 +61,7 @@ contract OPPS is ERC721Permit, Ownable {
         return __baseURI;
     }
 
-    function _getAndIncrementNonce(
-        uint256 _tokenId
-    ) internal virtual override returns (uint256) {
+    function _getAndIncrementNonce(uint256 _tokenId) internal virtual override returns (uint256) {
         uint256 nonce = nonces[_tokenId];
         nonces[_tokenId]++;
         return nonce;

@@ -8,10 +8,7 @@ import {TRISRedemption} from "./TRISRedemption.sol";
 contract PINTDeployer2 {
     constructor() {
         address pintDeployer1 = ComputeCreateAddress.getCreateAddress(msg.sender, 1);
-        address pint = ComputeCreateAddress.getCreateAddress(
-            pintDeployer1,
-            3
-        );
+        address pint = ComputeCreateAddress.getCreateAddress(pintDeployer1, 3);
         new WOCKRedemption(pint);
         new TRISRedemption(pint);
         assembly {

@@ -13,7 +13,7 @@ contract PintTest is Common {
     }
 
     function testPintLimits() public {
-        uint maxWallet = pint.maxWallet();
+        uint256 maxWallet = pint.maxWallet();
         vm.startPrank(treasury);
         pint.enableTrading();
         pint.transfer(address(100), maxWallet);
@@ -34,37 +34,21 @@ contract PintTest is Common {
         pint.setAutomatedMarketMakerPair(address(200), true);
         vm.startPrank(address(100));
         pint.transfer(address(200), 1 ether);
-        assertEq(
-            pint.balanceOf(address(200)),
-            (1 ether) - (((1 ether) * 5) / (100))
-        );
+        assertEq(pint.balanceOf(address(200)), (1 ether) - (((1 ether) * 5) / (100)));
         assertEq(pint.balanceOf(address(pint)), ((1 ether) * 5) / 100);
         vm.startPrank(treasury);
-        pint.transfer(
-            address(100),
-            1 ether - pint.balanceOf(address(100)) + 10000000 ether
-        );
+        pint.transfer(address(100), 1 ether - pint.balanceOf(address(100)) + 10000000 ether);
         vm.startPrank(address(100));
         address[] memory path = new address[](2);
         path[0] = address(pint);
         path[1] = address(weth);
-        uint balanceBefore = pint.balanceOf(address(pint));
+        uint256 balanceBefore = pint.balanceOf(address(pint));
         router.swapExactTokensForETHSupportingFeeOnTransferTokens(
-            1000000 ether,
-            1,
-            path,
-            address(100),
-            block.timestamp + 200
+            1000000 ether, 1, path, address(100), block.timestamp + 200
         );
-        require(
-            pint.balanceOf(address(pint)) - balanceBefore > 0,
-            "fees not deducted"
-        );
-        pint.transfer(
-            address(pint),
-            pint.swapTokensAtAmount() - pint.balanceOf(address(pint))
-        );
-        uint treasuryBalanceBefore = treasury.balance;
+        require(pint.balanceOf(address(pint)) - balanceBefore > 0, "fees not deducted");
+        pint.transfer(address(pint), pint.swapTokensAtAmount() - pint.balanceOf(address(pint)));
+        uint256 treasuryBalanceBefore = treasury.balance;
         pint.transfer(address(300), 1 ether);
         require(treasury.balance - treasuryBalanceBefore >= 0, "!swap");
     }
