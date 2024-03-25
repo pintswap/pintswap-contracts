@@ -20,7 +20,17 @@ contract PintV2Test is Test {
     pintV2 = PINTV2(pintDeployer.getPintAddress()); 
   }
 
-  function testMigration() public {
+  function testMigrationEasyVerify() public {
+    deal(pint, address(this), 100e18);  
+    IERC20(pint).approve(address(pintV2), type(uint256).max);  
+    pintV2.migrate(); 
+    
+    uint256 balanceV2After = IERC20(address(pintV2)).balanceOf(address(this));  
+    console2.log(balanceV2After); 
+    
+  }
+
+  function testMigrationTreasury() public {
     vm.startPrank(pintWhale);  
       
     IERC20(pint).approve(address(pintV2), type(uint256).max);  
@@ -33,6 +43,21 @@ contract PintV2Test is Test {
     console2.log(balanceV2After); 
     
   }
+
+  function testMigrationFuzz(uint96 amount) public {
+    vm.assume(amount > 0); 
+    deal(pint, address(this), amount);  
+    IERC20(pint).approve(address(pintV2), type(uint256).max);  
+    pintV2.migrate(); 
+
+    uint256 balanceV1After = IERC20(pint).balanceOf(address(this)); 
+    assertEq(0, balanceV1After); 
+    
+    uint256 balanceV2After = IERC20(address(pintV2)).balanceOf(address(this));  
+
+    assertEq(amount / 10, balanceV2After); 
+  }
+
 
 }
 

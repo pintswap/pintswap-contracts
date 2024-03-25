@@ -20,6 +20,7 @@ contract PINTDeployer is Test {
     address constant treasury = address(0xEC3de41D5eAD4cebFfD656f7FC9d1a8d8Ff0f8c0);
     address constant opps = 0xd665F1153599e8F799b2514069dF4481d3bcb043; 
     address payable public pintV2; 
+    address internal constant pintv1 = 0x58fB30A61C218A3607e9273D52995a49fF2697Ee;  
     
     constructor() {
         //address opps = ComputeCreateAddress.getCreateAddress(msg.sender, 0);
@@ -28,7 +29,7 @@ contract PINTDeployer is Test {
         address pair = UniswapV2PairComputeLibrary.pairFor(address(factory), pintAddress, weth);
         console2.log(pintAddress); 
         console2.log(pair); 
-        address pintLogic = address(new PINTV2(pair, OPPS(opps).vaultFor(pintAddress)));
+        address pintLogic = address(new PINTV2(pintv1));
         //address pintLogic = address(new PINTV2(pair, address(0)));
         address pint = address(
             new TransparentUpgradeableProxy(

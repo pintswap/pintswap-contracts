@@ -24,7 +24,7 @@ contract PINTV2 is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable 
     IWETH constant weth = IWETH(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
     address public immutable pair;
     address public immutable ve;
-    address private immutable PINTV1 = 0x58fB30A61C218A3607e9273D52995a49fF2697Ee;
+    address public immutable PINTV1; 
     address public constant deadAddress = address(0xdead);
 
     bool private swapping;
@@ -84,9 +84,8 @@ contract PINTV2 is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable 
 
     event SwapAndLiquify(uint256 tokensSwapped, uint256 ethReceived, uint256 tokensIntoLiquidity);
 
-    constructor(address _pair, address _ve) {
-        pair = _pair;
-        ve = _ve;
+    constructor(address _PINTV1) {
+      PINTV1 = _PINTV1; 
     }
 
     function initialize() public initializer {
@@ -139,7 +138,7 @@ contract PINTV2 is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable 
             _mint is an internal function in ERC20.sol that is only called here,
             and CANNOT be called ever again
         */
-        _mint(treasury, totalSupply);
+        //_mint(treasury, totalSupply);
     }
 
     receive() external payable {}
