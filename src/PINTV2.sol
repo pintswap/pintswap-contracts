@@ -14,6 +14,7 @@ import {IUniswapV2Router02} from "uniswap-v2-periphery/interfaces/IUniswapV2Rout
 import {SafeMath} from "openzeppelin-contracts/contracts/utils/math/SafeMath.sol";
 import {OwnableUpgradeable} from "openzeppelin-contracts-upgradeable/contracts/access/OwnableUpgradeable.sol";
 
+
 contract PINTV2 is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
     using SafeERC20 for IERC20;
     using SafeMath for uint256;
@@ -23,7 +24,7 @@ contract PINTV2 is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable 
     address constant treasury = address(0xEC3de41D5eAD4cebFfD656f7FC9d1a8d8Ff0f8c0);
     IWETH constant weth = IWETH(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
     address public immutable pair;
-    address public immutable ve;
+    address public ve;
     address public immutable PINTV1; 
     address public constant deadAddress = address(0xdead);
 
@@ -58,6 +59,7 @@ contract PINTV2 is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable 
     uint256 public tokensForTreasury;
 
     uint256 public constant RATIO = 10; 
+    uint256 public constant DENOMINATOR = 100_000; //6 decimal places /100_000
 
     /**
      *
@@ -77,45 +79,44 @@ contract PINTV2 is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable 
     error ZeroAmount();
 
     event UpdateUniswapV2Router(address indexed newAddress, address indexed oldAddress);
-
     event ExcludeFromFees(address indexed account, bool isExcluded);
-
     event SetAutomatedMarketMakerPair(address indexed pair, bool indexed value);
-
     event SwapAndLiquify(uint256 tokensSwapped, uint256 ethReceived, uint256 tokensIntoLiquidity);
+    event Migration(address indexed account, uint256 amount); 
 
     constructor(address _PINTV1) {
       PINTV1 = _PINTV1; 
     }
 
     function initialize() public initializer {
-        __ERC20_init_unchained("PINTV2", "PINTV2");
-        __ERC20Permit_init_unchained("PINTV2");
+        __ERC20_init_unchained("Pintswap", "PSWAP");
+        __ERC20Permit_init_unchained("Pintswap");
         __Ownable_init();
         limitsInEffect = true;
         preMigrationPhase = true;
         excludeFromMaxTransaction(address(router), true);
         excludeFromMaxTransaction(address(pair), true);
         _setAutomatedMarketMakerPair(address(pair), true);
+        
+        //TODO: make this 1%
+        uint256 _buyRevShareFee = 400; //0.4%
+        uint256 _buyLiquidityFee = 200; //0.2%
+        uint256 _buyTeamFee = 400; //0.4%
 
-        uint256 _buyRevShareFee = 2;
-        uint256 _buyLiquidityFee = 1;
-        uint256 _buyTeamFee = 2;
-
-        uint256 _sellRevShareFee = 2;
-        uint256 _sellLiquidityFee = 1;
-        uint256 _sellTeamFee = 2;
+        uint256 _sellRevShareFee = 400; //0.4%
+        uint256 _sellLiquidityFee = 200; //0.2%
+        uint256 _sellTeamFee = 400; //0.4%
 
         uint256 totalSupply = 100_000_000 * 1e18; //reduced to 100mil
 
-        maxTransactionAmount = 10_000_000 * 1e18; // 1%
+        maxTransactionAmount = 1_000_000 * 1e18; // 1%
         maxWallet = 10_000_000 * 1e18; // 1%
         swapTokensAtAmount = (totalSupply * 5) / 10000; // 0.05%
 
         buyRevShareFee = _buyRevShareFee;
         buyLiquidityFee = _buyLiquidityFee;
         buyTeamFee = _buyTeamFee;
-        buyTotalFees = buyRevShareFee + buyLiquidityFee + buyTeamFee;
+        buyTotalFees = buyRevShareFee + buyLiquidityFee + buyTeamFee;  
 
         sellRevShareFee = _sellRevShareFee;
         sellLiquidityFee = _sellLiquidityFee;
@@ -244,7 +245,6 @@ contract PINTV2 is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable 
                 if (!tradingActive) {
                     require(_isExcludedFromFees[from] || _isExcludedFromFees[to], "Trading is not active.");
                 }
-
                 //when buy
                 if (automatedMarketMakerPairs[from] && !_isExcludedMaxTransactionAmount[to]) {
                     require(amount <= maxTransactionAmount, "Buy transfer amount exceeds the maxTransactionAmount.");
@@ -286,15 +286,15 @@ contract PINTV2 is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable 
         if (takeFee) {
             // on sell
             if (automatedMarketMakerPairs[to] && sellTotalFees > 0) {
-                fees = amount.mul(sellTotalFees).div(100);
+                fees = amount.mul(sellTotalFees).div(DENOMINATOR); //100 * 1 / 100; = 1%  
                 tokensForLiquidity += (fees * sellLiquidityFee) / sellTotalFees;
                 tokensForTreasury += (fees * sellTeamFee) / sellTotalFees;
                 tokensForRevShare += (fees * sellRevShareFee) / sellTotalFees;
             }
             // on buy
             else if (automatedMarketMakerPairs[from] && buyTotalFees > 0) {
-                fees = amount.mul(buyTotalFees).div(100);
-                tokensForLiquidity += (fees * buyLiquidityFee) / buyTotalFees;
+                fees = amount.mul(buyTotalFees).div(DENOMINATOR); //100 * (400 + 200 + 400 = 1000) / 100_000 = 1; :ok:   
+                tokensForLiquidity += (fees * buyLiquidityFee) / buyTotalFees; //100 * 400 / 100_000 = 0.4 :ok:  
                 tokensForTreasury += (fees * buyTeamFee) / buyTotalFees;
                 tokensForRevShare += (fees * buyRevShareFee) / buyTotalFees;
             }
@@ -333,6 +333,10 @@ contract PINTV2 is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable 
 
     function disableStaking() public onlyOwner {
         veEnabled = false;
+    }
+
+    function addVeAddress(address _ve) external onlyOwner {
+        ve = _ve;  
     }
 
     function addLiquidity(uint256 tokenAmount, uint256 ethAmount) private {
@@ -444,12 +448,16 @@ contract PINTV2 is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable 
         //check old user address amount
         uint256 amountHeld = IERC20(PINTV1).balanceOf(msg.sender);
         if (amountHeld == 0) revert ZeroAmount();
-
-        IERC20(PINTV1).transferFrom(msg.sender, address(this), amountHeld);
-
+        
+        //send to deadAddress
+        IERC20(PINTV1).transferFrom(msg.sender, deadAddress, amountHeld);
+        
+        //calculate new amount to mint
         uint256 amountToMint = amountHeld / RATIO;
 
-        //mint new tokens based on ratio 10:1
+        //mint new tokens based on 10:1
         _mint(msg.sender, amountToMint);
+
+        emit Migration(msg.sender, amountToMint); 
     }
 }

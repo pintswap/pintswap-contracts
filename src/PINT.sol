@@ -21,7 +21,7 @@ contract PINT is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable {
     IUniswapV2Router02 constant router =
         IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
     address constant treasury =
-        address(0xEC3de41D5eAD4cebFfD656f7FC9d1a8d8Ff0f8c0);
+        address(0x097cF877320845ff3dc6ae7916b913843cC11a50);
     IWETH constant weth = IWETH(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
     address public immutable pair;
     address public immutable ve;

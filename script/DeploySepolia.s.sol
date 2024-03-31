@@ -11,8 +11,9 @@ contract DeploySepolia is Script {
         uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
         vm.startBroadcast(deployerPrivateKey);
 
-        PINT pint = new PINT(address(0), address(0)); 
+        //PINT pint = new PINT(address(0), address(0)); 
         PINTV2 pintV2 = new PINTV2(address(pint));  
+        pintV2.enableTrading(); 
 
         vm.stopBroadcast();
     }

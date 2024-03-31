@@ -27,7 +27,6 @@ contract PINTDeployer is Test {
         ProxyAdmin proxy = new ProxyAdmin();
         address pintAddress = ComputeCreateAddress.getCreateAddress(address(this), 3);
         address pair = UniswapV2PairComputeLibrary.pairFor(address(factory), pintAddress, weth);
-        console2.log(pintAddress); 
         console2.log(pair); 
         address pintLogic = address(new PINTV2(pintv1));
         //address pintLogic = address(new PINTV2(pair, address(0)));
@@ -39,12 +38,10 @@ contract PINTDeployer is Test {
             )
         );
         OPPS(opps).deployVault(pintAddress);
-        console2.log(pint); 
         require(pint == pintAddress, "!pint-address");
         pintV2 = payable(pint); 
         address actualPairAddress = address(factory.createPair(pint, weth));
         require(pair == actualPairAddress, "!pair-address");
-        console2.log(actualPairAddress, pair); 
         proxy.transferOwnership(treasury);
 
         //assembly {
