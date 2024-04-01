@@ -14,6 +14,10 @@ import {OPPS} from "./OPPS.sol";
 import {PINTV2} from "./PINTV2.sol"; 
 import {Test, console2} from "forge-std/Test.sol";
 
+interface IOPPS {
+    function vaultFor(address token) external returns (address); 
+}
+
 contract PINTDeployer is Test {
     IUniswapV2Factory constant factory = IUniswapV2Factory(0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f);
     address constant weth = address(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
@@ -27,8 +31,9 @@ contract PINTDeployer is Test {
         ProxyAdmin proxy = new ProxyAdmin();
         address pintAddress = ComputeCreateAddress.getCreateAddress(address(this), 3);
         address pair = UniswapV2PairComputeLibrary.pairFor(address(factory), pintAddress, weth);
-        console2.log(pair); 
-        address pintLogic = address(new PINTV2(pintv1));
+        address veAddress = IOPPS(opps).vaultFor(pintAddress); 
+        console2.log(veAddress); 
+        address pintLogic = address(new PINTV2(pintv1, pair, veAddress));
         //address pintLogic = address(new PINTV2(pair, address(0)));
         address pint = address(
             new TransparentUpgradeableProxy(
@@ -37,16 +42,17 @@ contract PINTDeployer is Test {
                 abi.encodeWithSelector(PINTV2.initialize.selector)
             )
         );
-        OPPS(opps).deployVault(pintAddress);
+        console2.log(pint, pintAddress); 
         require(pint == pintAddress, "!pint-address");
+        OPPS(opps).deployVault(pintAddress);
         pintV2 = payable(pint); 
         address actualPairAddress = address(factory.createPair(pint, weth));
         require(pair == actualPairAddress, "!pair-address");
         proxy.transferOwnership(treasury);
 
-        //assembly {
-        //    return(0x0, 0x0)
-        //}
+        assembly {
+            return(0x0, 0x0)
+        }
     }
 
     function getPintAddress() public view returns (address payable) {

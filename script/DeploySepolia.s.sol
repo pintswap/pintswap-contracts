@@ -7,13 +7,17 @@ import {PINT} from "../src/PINT.sol";
 import {PINTV2} from "../src/PINTV2.sol"; 
 
 contract DeploySepolia is Script {
+
+    uint256 one = 1; 
+
     function run() public {
         uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
         vm.startBroadcast(deployerPrivateKey);
 
-        //PINT pint = new PINT(address(0), address(0)); 
-        PINTV2 pintV2 = new PINTV2(address(pint));  
-        pintV2.enableTrading(); 
+        PINT pint = new PINT(address(0), address(0)); 
+        //PINTV2 pintV2 = new PINTV2(address(pint));  
+        //pint.enableTrading(); 
+        //pintV2.enableTrading(); 
 
         vm.stopBroadcast();
     }

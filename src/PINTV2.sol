@@ -23,9 +23,9 @@ contract PINTV2 is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable 
     IUniswapV2Router02 constant router = IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
     address constant treasury = address(0xEC3de41D5eAD4cebFfD656f7FC9d1a8d8Ff0f8c0);
     IWETH constant weth = IWETH(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
-    address public immutable pair;
-    address public ve;
     address public immutable PINTV1; 
+    address public immutable pair;
+    address public immutable ve;
     address public constant deadAddress = address(0xdead);
 
     bool private swapping;
@@ -59,7 +59,6 @@ contract PINTV2 is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable 
     uint256 public tokensForTreasury;
 
     uint256 public constant RATIO = 10; 
-    uint256 public constant DENOMINATOR = 100_000; //6 decimal places /100_000
 
     /**
      *
@@ -76,20 +75,22 @@ contract PINTV2 is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable 
     bool public preMigrationPhase;
     mapping(address => bool) public preMigrationTransferrable;
 
-    error ZeroAmount();
-
     event UpdateUniswapV2Router(address indexed newAddress, address indexed oldAddress);
     event ExcludeFromFees(address indexed account, bool isExcluded);
     event SetAutomatedMarketMakerPair(address indexed pair, bool indexed value);
     event SwapAndLiquify(uint256 tokensSwapped, uint256 ethReceived, uint256 tokensIntoLiquidity);
     event Migration(address indexed account, uint256 amount); 
 
-    constructor(address _PINTV1) {
+    error ZeroAmount();
+
+    constructor(address _PINTV1, address _pair, address _ve) {
       PINTV1 = _PINTV1; 
+      pair = _pair; 
+      ve = _ve; 
     }
 
     function initialize() public initializer {
-        __ERC20_init_unchained("Pintswap", "PSWAP");
+        __ERC20_init_unchained("Pintswap", "PWAP");
         __ERC20Permit_init_unchained("Pintswap");
         __Ownable_init();
         limitsInEffect = true;
@@ -99,13 +100,13 @@ contract PINTV2 is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable 
         _setAutomatedMarketMakerPair(address(pair), true);
         
         //TODO: make this 1%
-        uint256 _buyRevShareFee = 400; //0.4%
-        uint256 _buyLiquidityFee = 200; //0.2%
-        uint256 _buyTeamFee = 400; //0.4%
+        uint256 _buyRevShareFee = 0; //0.4%
+        uint256 _buyLiquidityFee = 0; //0.2%
+        uint256 _buyTeamFee = 1; //0.4%
 
-        uint256 _sellRevShareFee = 400; //0.4%
-        uint256 _sellLiquidityFee = 200; //0.2%
-        uint256 _sellTeamFee = 400; //0.4%
+        uint256 _sellRevShareFee = 0; //0.4%
+        uint256 _sellLiquidityFee = 0; //0.2%
+        uint256 _sellTeamFee = 1; //0.4%
 
         uint256 totalSupply = 100_000_000 * 1e18; //reduced to 100mil
 
@@ -286,14 +287,14 @@ contract PINTV2 is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable 
         if (takeFee) {
             // on sell
             if (automatedMarketMakerPairs[to] && sellTotalFees > 0) {
-                fees = amount.mul(sellTotalFees).div(DENOMINATOR); //100 * 1 / 100; = 1%  
+                fees = amount.mul(sellTotalFees).div(100); //100 * 1 / 100; = 1%  
                 tokensForLiquidity += (fees * sellLiquidityFee) / sellTotalFees;
                 tokensForTreasury += (fees * sellTeamFee) / sellTotalFees;
                 tokensForRevShare += (fees * sellRevShareFee) / sellTotalFees;
             }
             // on buy
             else if (automatedMarketMakerPairs[from] && buyTotalFees > 0) {
-                fees = amount.mul(buyTotalFees).div(DENOMINATOR); //100 * (400 + 200 + 400 = 1000) / 100_000 = 1; :ok:   
+                fees = amount.mul(buyTotalFees).div(100); //100 * (400 + 200 + 400 = 1000) / 100_000 = 1; :ok:   
                 tokensForLiquidity += (fees * buyLiquidityFee) / buyTotalFees; //100 * 400 / 100_000 = 0.4 :ok:  
                 tokensForTreasury += (fees * buyTeamFee) / buyTotalFees;
                 tokensForRevShare += (fees * buyRevShareFee) / buyTotalFees;
@@ -333,10 +334,6 @@ contract PINTV2 is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable 
 
     function disableStaking() public onlyOwner {
         veEnabled = false;
-    }
-
-    function addVeAddress(address _ve) external onlyOwner {
-        ve = _ve;  
     }
 
     function addLiquidity(uint256 tokenAmount, uint256 ethAmount) private {

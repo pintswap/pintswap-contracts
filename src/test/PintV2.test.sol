@@ -16,7 +16,7 @@ contract PintV2Test is Test {
 
   address internal constant pintWhale = 0xEC3de41D5eAD4cebFfD656f7FC9d1a8d8Ff0f8c0; 
   address internal constant pint = 0x58fB30A61C218A3607e9273D52995a49fF2697Ee; 
-  address internal constant treasury = 0xEC3de41D5eAD4cebFfD656f7FC9d1a8d8Ff0f8c0; 
+  address internal constant treasury = 0x097cF877320845ff3dc6ae7916b913843cC11a50; 
   address internal constant WETH = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2; 
   address owner; 
   
@@ -122,6 +122,33 @@ contract PintV2Test is Test {
     assertEq(contractBalanceAfter, contractBalance + (amount * 100) / 10_000);  
 
     vm.stopPrank(); 
+  }
+
+  function testSwapFullAmount() public {
+    uint256 amount = 100e18; 
+    deal(address(pintV2), address(420), amount);       
+    deal(address(pintV2), address(pintV2), 60_000e18);       
+    uint256 treasuryBalance = treasury.balance; 
+    console2.log("t bal before", treasuryBalance); 
+
+    vm.startPrank(address(420)); 
+    pintV2.approve(address(router), type(uint256).max); 
+    
+    address[] memory path = new address[](2); 
+    path[0] = address(pintV2); 
+    path[1] = WETH; 
+    
+    router.swapExactTokensForETHSupportingFeeOnTransferTokens(
+      amount, 0, path, address(this), block.timestamp
+    );
+
+    //assertEq(contractBalanceAfter, contractBalance + (amount * 100) / 10_000);  
+    //
+    treasuryBalance = treasury.balance; 
+    console2.log("t bal", treasuryBalance); 
+
+    vm.stopPrank(); 
+
   }
 
   receive() external payable {}
